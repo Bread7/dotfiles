@@ -2,3 +2,4 @@
 rizin/
 __pycache__/
 unix/.config/vale/styles/
+.tmp*
