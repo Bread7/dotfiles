@@ -18,8 +18,7 @@ vale sync
 
 - Improve docs
 - Cleanup code
-- Add brewfile
-- Add asdf file
+- Cleanup brewfile
 - Use Nix
   - [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer)
   - [Nix on MacOS](https://www.youtube.com/watch?v=Z8BL8mdzWHI&t=1103s)
