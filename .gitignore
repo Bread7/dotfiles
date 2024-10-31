@@ -3,3 +3,5 @@ rizin/
 __pycache__/
 unix/.config/vale/styles/
 .tmp*
+unix/.config/spicetify/Backup/*
+unix/.config/spicetify/Extracted/
