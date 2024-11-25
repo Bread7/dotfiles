@@ -126,16 +126,3 @@ set -Ux VALE_STYLES_PATH $HOME/.config/vale/styles/
 
 # For quick one time ssh
 abbr ssh1 "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o \"LogLevel ERROR\""
-
-# SSH initialise keys into system
-function ssh-init --description "Initialise private keys into system"
-    set dirs $(ls -d $HOME/.ssh/*/)
-    for dir in $dirs
-        set files $(ls $dir | grep -v "pub")
-        for file in $files
-            echo -e "adding ssh key: $file"
-            ssh-add $dir$file
-            echo -e "\n"
-        end
-    end
-end

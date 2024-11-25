@@ -35,3 +35,16 @@ fish_add_path /opt/homebrew/opt/postgresql@15/bin
 
 # Set path for Spicetify
 set -Ux SPOTIFY_PATH /Applications/Spotify.app/Contents/Resources
+
+# SSH initialise keys into system
+function ssh-init --description "Initialise private keys into system"
+    set dirs $(ls -d $HOME/.ssh/*/)
+    for dir in $dirs
+        set files $(ls $dir | grep -v "pub")
+        for file in $files
+            echo -e "adding ssh key: $file"
+            ssh-add $dir$file
+            echo -e "\n"
+        end
+    end
+end
