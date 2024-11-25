@@ -1,0 +1,48 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "files.hotExit": "onExitAndWindowClose",
+    "java.import.gradle.java.home": "/Users/zj/Library/Java/JavaVirtualMachines/temurin-18.0.2.1/Contents/Home",
+    "java.import.gradle.home": "/Users/zj/Library/Java/JavaVirtualMachines/temurin-18.0.2.1/Contents/Home",
+    "java.import.gradle.jvmArguments": "",
+    "java.jdt.ls.java.home": "/Users/zj/Library/Java/JavaVirtualMachines/temurin-18.0.2.1/Contents/Home",
+    "clang-format.executable": "/Users/zj/Development/INF2004 Embedded Systems/.clang-format",
+    "java.configuration.runtimes": [
+        
+    ],
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "material-icon-theme",
+    "cmake.configureOnOpen": true,
+    "cmake.generator": "Unix Makefiles",
+    "cmake.buildEnvironment": {
+        "PICO_SDK_PATH": "/Users/zj/Development/pico-sdk",
+        "PICO_TOOLCHAIN_PATH": "/Applications/ArmGNUToolchain/13.2.Rel1/arm-none-eabi",
+        "FREERTOS_KERNEL_PATH": "/Users/zj/Development/FreeRTOS-Kernel"
+    },
+    "cmake.configureEnvironment": {
+        "PICO_SDK_PATH": "/Users/zj/Development/pico-sdk",
+        "PICO_TOOLCHAIN_PATH": "/Applications/ArmGNUToolchain/13.2.Rel1/arm-none-eabi",
+        "FREERTOS_KERNEL_PATH": "/Users/zj/Development/FreeRTOS-Kernel"
+    },
+    "cmake.environment": {
+        "PICO_SDK_PATH": "/Users/zj/Development/pico-sdk",
+        "PICO_TOOLCHAIN_PATH": "/Applications/ArmGNUToolchain/13.2.Rel1/arm-none-eabi",
+        "WIFI_SSID": "INF2004",
+        "WIFI_PASSWORD": "superduperpassword",
+        "FREERTOS_KERNEL_PATH": "/Users/zj/Development/FreeRTOS-Kernel"
+    },
+    "cmake.options.advanced": {
+        "build": {
+            "statusBarVisibility": "visible"
+        },
+        "launch": {
+            "statusBarVisibility": "visible"
+        },
+        "debug": {
+            "statusBarVisibility": "visible"
+        }
+    },
+    "avdmanager.sdkPath": "/Users/zj/Development/android-sdk",
+    "avdmanager.executable": "",
+    "avdmanager.sdkManager": "",
+    "emulator.emulatorPath": "/Users/zj/Development/android-sdk/emulator"
+}

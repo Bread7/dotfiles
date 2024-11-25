@@ -154,3 +154,22 @@ abbr brew86 "arch -x86_64 /usr/local/bin/brew"
 #set -gx LDFLAGS "-L(brew86 --prefix openssl)/lib -L(brew86 --prefix readline)/lib -L(brew86 --prefix zlib)/lib -L(brew86 --prefix bzip2)/lib -L(brew86 --prefix gettext)/lib -L(brew86 --prefix libffi)/lib"
 ## Providing an incorrect openssl version forces a proper openssl version to be downloaded and linked during the build
 #set PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA "openssl@1.0"
+
+# Postgres 15 on macos
+fish_add_path /opt/homebrew/opt/postgresql@15/bin
+
+# For quick one time ssh
+abbr ssh1 "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o \"LogLevel ERROR\""
+
+# SSH initialise keys into system
+function ssh-init --description "Initialise private keys into system"
+    set dirs $(ls -d $HOME/.ssh/*/)
+    for dir in $dirs
+        set files $(ls $dir | grep -v "pub")
+        for file in $files
+            echo -e "adding ssh key: $file"
+            ssh-add $dir$file
+            echo -e "\n"
+        end
+    end
+end

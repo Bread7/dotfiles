@@ -106,6 +106,9 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus --boundaries all-monitors-outer-frame right'
 
+# alt-\`-h = 'focus-monitor left'
+# alt-\`-l = 'focus-monitor right'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
