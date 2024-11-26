@@ -4,10 +4,8 @@ thefuck --alias | source
 
 # Bat > cat configs
 abbr oldcat "cat"
-abbr cat "bat --color=always --decorations=always --style=full --wrap=never"
 #abbr cat "bat --color=always --decorations=always --theme=\"Catppuccin Mocha\" "
 ## Apply bat configs to man pages
-export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always --decorations=always '" 
 #export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always --decorations=always --theme=\"Catppuccin Mocha\"'"
 #export MANROFFOPT="-c" # Uncomment if there are formatting problems on man pages with bat
 
@@ -67,11 +65,11 @@ set YAZI_CONFIG_HOME "$HOME/.config/yazi"
 fzf --fish | source
 ## Rose Pine Moon - https://github.com/rose-pine/fzf/blob/main/dist/rose-pine-moon.fish
 set -Ux FZF_COLOUR_OPTS "
-                       --color=fg:#908caa,bg:#232136,hl:#ea9a97 
- 	                     --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97 
-                       --color=border:#44415a,header:#3e8fb0,gutter:#232136 
-                       --color=spinner:#f6c177,info:#9ccfd8 
-                       --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa 
+                       --color=fg:#908caa,bg:#232136,hl:#ea9a97
+ 	                     --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+                       --color=border:#44415a,header:#3e8fb0,gutter:#232136
+                       --color=spinner:#f6c177,info:#9ccfd8
+                       --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
                        --multi"
 ## Catppuccin Mocha theme - https://github.com/catppuccin/fzf
 #set -Ux FZF_COLOUR_OPTS "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -89,13 +87,9 @@ set FZF_MOVEMENTS "--bind='ctrl-e:execute(nvim {})' \
                    --bind='ctrl-a:toggle-all'
                    --bind='ctrl-s:toggle-sort'
                   "
-set FZF_PREVIEW_COMMAND "'bat --color=always --decorations=always --style=full --wrap=never {}'"
 set FZF_DEFAULT_OPTS "$FZF_COLOUR_OPTS $FZF_MOVEMENTS --layout=reverse --border=rounded --cycle --preview-window='right' --preview=$FZF_PREVIEW_COMMAND --ansi"
 set FZF_CTRL_T_OPTS "--walker-skip=.git,node_modules,target --preview=$FZF_PREVIEW_COMMAND"
 set FZF_ALT_C_OPTS "--walker-skip=.git,node_modules,target --preview 'tree -C {}'"
-
-# Display keymaps on terminal for commonly used programs
-set newCat bat --color=always --decorations=always --style=full --wrap=never
 
 function yazi-keys -d "Show yazi keymaps"
     $newCat $HOME/.config/yazi/keymap.toml

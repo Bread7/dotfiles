@@ -48,3 +48,14 @@ function ssh-init --description "Initialise private keys into system"
         end
     end
 end
+
+# Custom FZF.fish key bindings
+set fzf_preview_file_cmd "bat --color=always --decorations=always"
+set FZF_PREVIEW_COMMAND "'bat --color=always --decorations=always --style=full --wrap=never {}'"
+
+# Bat configs
+abbr cat "bat --color=always --decorations=always --style=full --wrap=never"
+export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always --decorations=always '"
+
+# Display keymaps on terminal for commonly used programs
+set newCat bat --color=always --decorations=always --style=full --wrap=never

@@ -88,7 +88,6 @@ set GIT_CONFIG_SYSTEM "$HOME/.config/git"
 # Custom FZF.fish key bindings
 fzf_configure_bindings --directory=\\cX@sf --git_log=\\cX@sl --git_status=\\cX@ss --processes=\\cX@sp --history=\\cX@sr --variables=\\cX@sv
 set fzf_preview_dir_cmd "eza --all --colour=always --icons=always --classify=always"
-set fzf_preview_file_cmd "bat --color=always --decorations=always"
 set fzf_history_time_format "%A - %d/%m/%y, %I:%M:%S %p"
 set fzf_diff_highlighter "delta --paging=never --width=20"
 
