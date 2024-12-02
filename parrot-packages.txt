@@ -1,5 +1,6 @@
 adduser
 apt
+apt-transport-https
 apt-utils
 base-files
 base-passwd
@@ -56,6 +57,7 @@ gcc-9-base
 gdm3
 gettext
 git
+git-lfs
 gnupg
 gnupg-l10n
 gnupg-utils
@@ -96,7 +98,6 @@ libadwaita-1-0
 libadwaita-1-dev
 libao-dev
 libapparmor1
-libapt-pkg6.0
 libargon2-1
 libassuan0
 libattr1
@@ -212,6 +213,7 @@ libslang2
 libsmartcols1
 libsqlite3-0
 libss2
+libssl-dev
 libssl1.1
 libstdc++6
 libsystemd0

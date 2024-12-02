@@ -7,6 +7,7 @@ $scripts/install-parrot-packages.sh
 sudo $scripts/apt-modification.sh
 
 # Wezterm
+$scripts/install-wezterm.sh
 $scripts/wezterm-post.sh
 
 # Miniconda
@@ -37,6 +38,7 @@ $scripts/install-calcure.sh
 $scripts/install-swww.sh
 $scripts/install-waypaper.sh
 $scripts/install-git-lfs.sh
+$scripts/install-nushell.sh
 
 # Post installs
 $scripts/symlink-paths.sh
