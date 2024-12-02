@@ -36,6 +36,7 @@ $scripts/install-swaylock-effects.sh
 $scripts/install-calcure.sh
 $scripts/install-swww.sh
 $scripts/install-waypaper.sh
+$scripts/install-git-lfs.sh
 
 # Post installs
 $scripts/symlink-paths.sh
