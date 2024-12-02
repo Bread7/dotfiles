@@ -1,0 +1,4 @@
+# On 2K
+profile {
+    output "Virtual-1" mode 1920x1440 scale 1 position 0,0
+}

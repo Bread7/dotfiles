@@ -5,3 +5,5 @@ unix/.config/vale/styles/
 .tmp*
 unix/.config/spicetify/Backup/*
 unix/.config/spicetify/Extracted/*
+*.gif
+linux-specific.fish

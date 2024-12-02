@@ -107,6 +107,10 @@ Using testing repo
 
 `sudo apt -t testing install librust-wayland-server-dev libwlroots-dev`
 
+## Create list of apt packages
+
+`apt-mark showmanual > parrot-packages.txt`
+
 ## References
 
 [Username not in sudoers](https://www.baeldung.com/linux/username-not-in-sudoers-file)

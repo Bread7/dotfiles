@@ -1,0 +1,1 @@
+/home/breadthesire/.asdf/completions/asdf.fish
