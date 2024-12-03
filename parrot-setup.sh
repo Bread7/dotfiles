@@ -46,3 +46,12 @@ $scripts/install-clipsync.sh
 
 # Post installs
 $scripts/symlink-paths.sh
+
+# BTRFS setup
+$scripts/post-snapper.sh
+$scripts/post-grub-btrfs.sh
+$scripts/post-snapper-rollback.sh
+$scripts/install-btrfs-assistant.sh
+
+# Custom tools
+$scripts/install-tools.sh

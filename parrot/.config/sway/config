@@ -259,4 +259,11 @@ exec mako --config $HOME/.config/mako/config
 exec waypaper --restore
 # Use the command below with waypaper
 exec_always bash $HOME/.config/waypaper/scripts/swww_random.sh $HOME/.config/wallpapers 2>/dev/null &
+
+# Make sure to click with mouse from host to enable copy paste
+exec_always vmware-user-suid-wrapper
+exec_always vmware-user
 exec_always clipsync watch without-notifications
+
+# For java GUI apps
+exec wmname LG3D

@@ -33,8 +33,11 @@ abbr ssh-init \"ssh-agent \$SHELL && ssh-init-keys\"
 source \$HOME/.keychain/*-fish
 source \$HOME/.keychain/*-fish-gpg
 
+# BTRFS
+abbr btrfs-assistant \"sudo -E btrfs-assistant-bin\"
+
 # Pipx binaries
-fish_add_path $HOME/.local/bin
+fish_add_path \$HOME/.local/bin
 
 # Screenshot
 # https://github.com/gabm/Satty
