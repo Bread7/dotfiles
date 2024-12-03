@@ -40,5 +40,9 @@ $scripts/install-waypaper.sh
 $scripts/install-git-lfs.sh
 $scripts/install-nushell.sh
 
+# VMware copy/paste issue on wayland
+$scripts/install-clipnotify.sh
+$scripts/install-clipsync.sh
+
 # Post installs
 $scripts/symlink-paths.sh

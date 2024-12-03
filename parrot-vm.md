@@ -107,6 +107,11 @@ Using testing repo
 
 `sudo apt -t testing install librust-wayland-server-dev libwlroots-dev`
 
+## Copy/pasting between vm and host
+
+[issue](https://www.reddit.com/r/swaywm/comments/rv668l/yet_another_clipboard_thread_x11_sync_wayland_and/)
+[issue 2](https://github.com/hyprwm/Hyprland/issues/6132)
+
 ## Create list of apt packages
 
 `apt-mark showmanual > parrot-packages.txt`
