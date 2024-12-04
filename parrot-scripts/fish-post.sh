@@ -39,6 +39,10 @@ abbr btrfs-assistant \"sudo -E btrfs-assistant-bin\"
 # Pipx binaries
 fish_add_path \$HOME/.local/bin
 
+# OpenGL issue
+# see: https://github.com/labwc/labwc/issues/1829
+set LIBGL_ALWAYS_SOFTWARE 1
+
 # Screenshot
 # https://github.com/gabm/Satty
 abbr grim 'grim -g \"\$(slurp -o -r -c \'#ff0000ff\')\" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-\$(date \'+%Y%m%d-%H:%M:%S\').png'

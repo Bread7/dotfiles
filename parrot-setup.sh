@@ -2,6 +2,9 @@
 
 scripts="./parrot-scripts"
 
+# Environment
+$scripts/force-opengl.sh
+
 # APT
 $scripts/install-parrot-packages.sh
 sudo $scripts/apt-modification.sh
