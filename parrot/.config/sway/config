@@ -76,7 +76,7 @@ include /etc/sway/config-vars.d/*
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_modifier $mod normal
+    # floating_modifier $mod normal
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
@@ -266,4 +266,4 @@ exec_always vmware-user
 exec_always clipsync watch without-notifications
 
 # For java GUI apps
-# exec wmname LG3D
+exec wmname LG3D
