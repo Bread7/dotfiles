@@ -8,10 +8,13 @@ I just wanted to try hyprland.
 
 ## Structure
 
-1. EFI partition - 1.2Gb
-2. /tmp - 4GB, ext4
-3. swap - 4GB, ext4
-4. / - <remaining space>, btrfs
+Create efi and /boot separately, encrypt physical volume > configure LVM > split LVM separately
+
+1. EFI partition - 1GB, efi
+2. /boot - 2GB, ext4
+3. /tmp - 4GB, encrypted LVM - btrfs
+4. swap - 4GB, encrypted LVM - btrfs
+5. / - <remaining space>, encrypted LVM - btrfs
 
 ## Add keyboard shortcut to open terminal
 

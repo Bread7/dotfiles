@@ -34,8 +34,8 @@ asdf global solidity latest
 
 echo "Installing c# for ASDF"
 asdf plugin add dotnet
-#asdf install dotnet 8.0.301 # to adjust in the future
-#asdf global dotnet 8.0.301
+asdf install dotnet 8.0.301 # to adjust in the future
+asdf global dotnet 8.0.301
 # Dotnet not available on asdf for some reason, to try again in the future
 #wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 #sudo dpkg -i packages-microsoft-prod.deb

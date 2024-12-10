@@ -8,4 +8,4 @@ sudo cp target/release/swww-daemon /usr/local/bin
 cp completions/swww.fish $HOME/.config/fish/completions/swww.fish
 ./doc/gen.sh
 cd ..
-sudo rm -r swww.git
+sudo rm -r swww

@@ -6,10 +6,10 @@
 # NOTE: this script is in bash (not posix shell), because the RANDOM variable
 # we use is not defined in posix
 
-if [[ $# -lt 1 ]] || [[ ! -d $1   ]]; then
-	echo "Usage:
+if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
+    echo "Usage:
 	$0 <dir containing images>"
-	exit 1
+    exit 1
 fi
 
 # Edit below to control the images transition
@@ -20,14 +20,14 @@ export SWWW_TRANSITION_STEP=2
 INTERVAL=300
 
 while true; do
-	find -L "$1" \
-		| while read -r img; do
-			echo "$((RANDOM % 1000)):$img"
-		done \
-		| sort -n | cut -d':' -f2- \
-		| while read -r img; do
+    find -L "$1" |
+        while read -r img; do
+            echo "$((RANDOM % 1000)):$img"
+        done |
+        sort -n | cut -d':' -f2- |
+        while read -r img; do
             echo $img
-			swww img "$img"
-			sleep $INTERVAL
-		done
+            swww img "$img"
+            sleep $INTERVAL
+        done
 done

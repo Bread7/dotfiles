@@ -16,6 +16,7 @@ vale sync
 
 ## Future todos
 
+- Fix debian setup
 - Improve docs
 - Cleanup code
 - Cleanup brewfile

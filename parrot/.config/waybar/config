@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["sway/workspaces", "wlr/taskbar", "sway/mode", "sway/window"],
+    "modules-left": ["hyprland/workspaces", "sway/workspaces", "wlr/taskbar", "hyprland/window", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "network", "custom/storage", "pulseaudio", "custom/powermenu"],
     "sway/mode": {
@@ -29,8 +29,25 @@
         "on-click": "wezterm -e calcure",
     },
     "hyprland/window": {
-        "format": "👉 {}",
-        "separate-outputs": true
+        "format": "{initialTitle}",
+        "separate-outputs": true,
+        "rewrite": {
+        },
+    },
+    "hyprland/workspaces": {
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "󰅶",
+            "5": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 3,
+        },
     },
     "idle_inhibitor": {
 		"format": "{icon}",

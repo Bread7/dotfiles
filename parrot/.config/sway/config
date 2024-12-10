@@ -267,3 +267,4 @@ exec_always clipsync watch without-notifications
 
 # For java GUI apps
 exec wmname LG3D
+#exec "regreet; swaymsg exit"
