@@ -1,0 +1,92 @@
+# Nice themes
+# Adventure
+# Arthur
+# catppuccin-frappe
+# catppuccin-mocha
+# CutiePro
+# Dark+
+# DoomOne
+# flexoki-dark
+# Later This Evening
+# LiquidCarbonTransparent
+# MaterialDarker
+# mellow
+# rose-pine-moon
+# Smyck
+# SpaceGray Eighties
+# Subliminal
+# Teerb
+# Tomorrow Night
+# Tomorrow Night Bright
+# UltraDark
+# zenbones_dark
+# zenwritten_dark
+
+### Split config into multiple files
+### If '?' is prefixed, file is optional and will ignore if it does not exists. ?path/place
+# config-file =
+
+theme = dark:catppuccin-frappe,light:Arthur
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity = 0.65
+mouse-scroll-multiplier = 1.5
+background-opacity = 0.85
+# adjust-cell-height = 5%
+macos-titlebar-style = transparent
+
+### Font
+# font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "SauceCode Pro Nerd Font Mono"
+# font-family = "Inconsolata Nerd Font Mono"
+# font-size = 16
+font-thicken = true
+font-thicken-strength = 255
+font-feature = liga
+
+quit-after-last-window-closed = true
+
+### Shell integration override
+shell-integration-features = no-cursor
+
+###############################################################
+### Keybinds
+
+keybind = super+shift+d=unbind
+keybind = super+d=unbind
+keybind = super+alt+up=unbind
+keybind = super+alt+down=unbind
+keybind = super+alt+right=unbind
+keybind = super+alt+left=unbind
+keybind = super+alt+shift+w=unbind
+keybind = super+physical:one=unbind
+keybind = super+physical:two=unbind
+keybind = super+physical:three=unbind
+keybind = super+physical:four=unbind
+keybind = super+physical:five=unbind
+keybind = super+physical:six=unbind
+keybind = super+physical:seven=unbind
+keybind = super+physical:eight=unbind
+keybind = super+physical:nine=unbind
+keybind = super+right_bracket=unbind
+keybind = super+left_bracket=unbind
+keybind = super+ctrl+h=unbind
+keybind = super+ctrl+i=unbind
+keybind = super+ctrl+j=unbind
+keybind = super+ctrl+k=unbind
+keybind = ctrl+shift+tab=unbind
+keybind = super+shift+j=unbind
+keybind = super+alt+shift+j=unbind
+
+keybind = super+\=new_split:right
+keybind = super+shift+\=new_split:down
+keybind = super+ctrl+k=goto_split:up
+keybind = super+ctrl+j=goto_split:down
+keybind = super+ctrl+l=goto_split:right
+keybind = super+ctrl+h=goto_split:left
+keybind = super+right_bracket=next_tab
+keybind = super+left_bracket=previous_tab
+keybind = super+shift+right_bracket=move_tab:1
+keybind = super+shift+left_bracket=move_tab:-1
+keybind = super+shift+f=write_screen_file:paste
+keybind = super+alt+shift+f=write_screen_file:paste

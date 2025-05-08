@@ -1,6 +1,6 @@
-if status is-interactive
+# if status is-interactive
     # Commands to run in interactive sessions can go here
-end
+#end
 
 # PNPM configs
 set -gx PNPM_HOME "$HOME/Development/global_node_modules"
@@ -55,9 +55,9 @@ set PATH $HOME/bin/ $PATH
 set XDG_CONFIG_HOME "$HOME/.config"
 
 # ASDF configs
-source $HOME/.asdf/plugins/golang/set-env.fish
+#source $HOME/.asdf/plugins/golang/set-env.fish
 set RUST_WITHOUT rust-docs
-source $HOME/.asdf/plugins/java/set-java-home.fish
+#source $HOME/.asdf/plugins/java/set-java-home.fish
 fish_add_path $GOBIN
 
 # Docker configs
@@ -67,7 +67,7 @@ export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
 # Dotnet configs
-export DOTNET_ROOT=$HOME/.asdf/installs/dotnet/8.0.301
+#export DOTNET_ROOT=$HOME/.asdf/installs/dotnet/8.0.301
 
 # Rust / Cargo binaries path
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -86,7 +86,7 @@ set GIT_CONFIG_GLOBAL "$HOME/.config/git"
 set GIT_CONFIG_SYSTEM "$HOME/.config/git"
 
 # Custom FZF.fish key bindings
-fzf_configure_bindings --directory=\\cX@sf --git_log=\\cX@sl --git_status=\\cX@ss --processes=\\cX@sp --history=\\cX@sr --variables=\\cX@sv
+#fzf_configure_bindings --directory=\\cX@sf --git_log=\\cX@sl --git_status=\\cX@ss --processes=\\cX@sp --history=\\cX@sr --variables=\\cX@sv
 set fzf_preview_dir_cmd "eza --all --colour=always --icons=always --classify=always"
 set fzf_history_time_format "%A - %d/%m/%y, %I:%M:%S %p"
 set fzf_diff_highlighter "delta --paging=never --width=20"
@@ -125,3 +125,10 @@ set -Ux VALE_STYLES_PATH $HOME/.config/vale/styles/
 
 # For quick one time ssh
 abbr ssh1 "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o \"LogLevel ERROR\""
+
+# Culprit for slowing fish down in macos if removed
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+# EDITOR configs
+set -Ux EDITOR "nvim"
+set -Ux VISUAL "nvim"
