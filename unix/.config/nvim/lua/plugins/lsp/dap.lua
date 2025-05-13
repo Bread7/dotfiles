@@ -44,19 +44,19 @@ return {
 		-- Installations: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 		-- https://github.com/PlatyPew/neovim-init.lua/blob/master/lua/plugins/dap.lua
 		-- https://github.com/vishal340/new_nvim/blob/fda776e6341d84d77b6dedb03ba31bdba853a54b/lua/plugins/dap.lua#L154
-		dap.adapters["pwa-node"] = {
-			type = "server",
-			host = "localhost",
-			port = "${port}",
-			executable = {
-				command = "node",
-				-- 💀 Make sure to update this path to point to your installation
-				args = {
-					registry.get_package("js-debug-adapter"):get_install_path(),
-					"${port}",
-				},
-			},
-		}
+		-- dap.adapters["pwa-node"] = {
+		-- 	type = "server",
+		-- 	host = "localhost",
+		-- 	port = "${port}",
+		-- 	executable = {
+		-- 		command = "node",
+		-- 		-- 💀 Make sure to update this path to point to your installation
+		-- 		args = {
+		-- 			registry.get_package("js-debug-adapter"):get_install_path(),
+		-- 			"${port}",
+		-- 		},
+		-- 	},
+		-- }
 
 		-- DAP keymaps
 		map({ "n" }, "<leader>dt", dap.toggle_breakpoint, "DAP: Toggle breakpoint")

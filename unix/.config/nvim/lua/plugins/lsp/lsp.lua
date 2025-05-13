@@ -105,8 +105,19 @@ return {
 
 		-- Enable autocompletion (assign to every lsp server config)
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = vim.tbl_deep_extend(
+			"force",
+			vim.lsp.protocol.make_client_capabilities(),
+			require("cmp_nvim_lsp").default_capabilities()
+		)
+		capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		-- Add the same capabilities to ALL server configurations.
+		-- Refer to :h vim.lsp.config() for more information.
+		vim.lsp.config("*", {
+			capabilities = vim.lsp.protocol.make_client_capabilities(),
+		})
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -125,121 +136,123 @@ return {
 		for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8-GB.add", "r"):lines() do
 			table.insert(spell_words, word)
 		end
-		local servers = {
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							pyflakes = { enabled = false },
-							pycodestyle = { enabled = false },
-							autopep8 = { enabled = false },
-							yapf = { enabled = false },
-							mccabe = { enabled = false },
-							pylsp_mypy = { enabled = false },
-							pylsp_black = { enabled = false },
-							pylsp_isort = { enabled = false },
-						},
-					},
-				},
-			},
-			basedpyright = {
-				analysis = {
-					autoSearchPaths = true,
-					diagnosticMode = "openFilesOnly",
-					useLibraryCodeForTypes = true,
-				},
-			},
-			ts_ls = {},
-			ruff = {},
-			html = { filetypes = { "html", "twig", "hbs", "templ" } },
-			cssls = {},
-			-- tailwindcss = {},
-			dockerls = {
-				settings = {
-					docker = {
-						languageserver = {
-							formatter = {
-								ignoreMultilineInstructions = true,
-							},
-						},
-					},
-				},
-			},
-			docker_compose_language_service = {
-				filetypes = { "yaml.docker-compose" },
-			},
-			sqlls = {},
-			jsonls = {},
-			yamlls = {
-				filetypes = { "yaml", "yaml.gitlab" },
-				settings = {
-					redhat = {
-						telemetry = {
-							enabled = false,
-						},
-					},
-				},
-			},
-			lua_ls = {
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-						runtime = { version = "LuaJIT" },
-						workspace = {
-							checkThirdParty = false,
-							library = {
-								vim.env.VIMRUNTIME,
-								-- "${3rd}/luv/library",
-								-- unpack(vim.api.nvim_get_runtime_file("", true)),
-							},
-						},
-						diagnostics = { disable = { "missing-fields" } },
-						format = {
-							enable = false,
-						},
-					},
-				},
-			},
-			marksman = {},
-			ltex = {
-				settings = {
-					ltex = {
-						language = "en-GB",
-						enabled = true,
-						dictionary = {
-							["en-GB"] = spell_words,
-						},
-					},
-				},
-			},
-			gopls = {
-				settings = {
-					gopls = {
-						gofumpt = true,
-					},
-				},
-			},
-			golangci_list_ls = {},
-			htmx = {},
-			-- remark_ls = {
-			-- 	settings = {
-			-- 		-- requireConfig = true,
-			-- 	},
-			-- },
-		}
+		-- -- No longer required since nvim v0.11
+		-- local servers = {
+		-- 	pylsp = {
+		-- 		settings = {
+		-- 			pylsp = {
+		-- 				plugins = {
+		-- 					pyflakes = { enabled = false },
+		-- 					pycodestyle = { enabled = false },
+		-- 					autopep8 = { enabled = false },
+		-- 					yapf = { enabled = false },
+		-- 					mccabe = { enabled = false },
+		-- 					pylsp_mypy = { enabled = false },
+		-- 					pylsp_black = { enabled = false },
+		-- 					pylsp_isort = { enabled = false },
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	basedpyright = {
+		-- 		analysis = {
+		-- 			autoSearchPaths = true,
+		-- 			diagnosticMode = "openFilesOnly",
+		-- 			useLibraryCodeForTypes = true,
+		-- 		},
+		-- 	},
+		-- 	ts_ls = {},
+		-- 	ruff = {},
+		-- 	html = { filetypes = { "html", "twig", "hbs", "templ" } },
+		-- 	cssls = {},
+		-- 	-- tailwindcss = {},
+		-- 	dockerls = {
+		-- 		settings = {
+		-- 			docker = {
+		-- 				languageserver = {
+		-- 					formatter = {
+		-- 						ignoreMultilineInstructions = true,
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	docker_compose_language_service = {
+		-- 		filetypes = { "yaml.docker-compose" },
+		-- 	},
+		-- 	sqlls = {},
+		-- 	jsonls = {},
+		-- 	yamlls = {
+		-- 		filetypes = { "yaml", "yaml.gitlab" },
+		-- 		settings = {
+		-- 			redhat = {
+		-- 				telemetry = {
+		-- 					enabled = false,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	lua_ls = {
+		-- 		settings = {
+		-- 			Lua = {
+		-- 				completion = {
+		-- 					callSnippet = "Replace",
+		-- 				},
+		-- 				runtime = { version = "LuaJIT" },
+		-- 				workspace = {
+		-- 					checkThirdParty = false,
+		-- 					library = {
+		-- 						vim.env.VIMRUNTIME,
+		-- 						-- "${3rd}/luv/library",
+		-- 						-- unpack(vim.api.nvim_get_runtime_file("", true)),
+		-- 					},
+		-- 				},
+		-- 				diagnostics = { disable = { "missing-fields" } },
+		-- 				format = {
+		-- 					enable = false,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	marksman = {},
+		-- 	ltex = {
+		-- 		settings = {
+		-- 			ltex = {
+		-- 				language = "en-GB",
+		-- 				enabled = true,
+		-- 				dictionary = {
+		-- 					["en-GB"] = spell_words,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	gopls = {
+		-- 		settings = {
+		-- 			gopls = {
+		-- 				gofumpt = true,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	golangci_list_ls = {},
+		-- 	htmx = {},
+		-- 	-- remark_ls = {
+		-- 	-- 	settings = {
+		-- 	-- 		-- requireConfig = true,
+		-- 	-- 	},
+		-- 	-- },
+		-- }
 
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				local server = servers[server_name] or {}
-				-- This handles overriding only values explicitly passed
-				-- by the server configuration above. Useful when disabling
-				-- certain features of an LSP (for example, turning off formatting for ts_ls)
-				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				require("lspconfig")[server_name].setup(server)
-			end,
-		})
+		-- -- No longer required since nvim v0.11
+		-- require("mason-lspconfig").setup_handlers({
+		-- 	function(server_name)
+		-- 		local server = servers[server_name] or {}
+		-- 		-- This handles overriding only values explicitly passed
+		-- 		-- by the server configuration above. Useful when disabling
+		-- 		-- certain features of an LSP (for example, turning off formatting for ts_ls)
+		-- 		server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+		-- 		require("lspconfig")[server_name].setup(server)
+		-- 	end,
+		-- })
 		-- Keymaps
 		map("n", "K", vim.lsp.buf.hover, "LSP: Display symbol information under cursor")
 	end,
