@@ -1,3 +1,5 @@
+local Util = require("core.helpers")
+
 -- Set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -105,3 +107,18 @@ vim.keymap.set("v", "p", '"_dP', opts)
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 -- vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Float windows
+-- opts.desc = "Core: Close floating window"
+-- vim.keymap.set("n", "<leader>q", function()
+-- 	vim.cmd.noh()
+-- 	Util.close_floats()
+-- 	reutrn("<esc>")
+-- 	-- if vim.bo.modifiable then
+-- 	--     Util.clear_highlights()
+-- 	-- else
+-- 	--     if #vim.api.nvim_list_wins() > 1 then
+-- 	--         return Util.feedkeys("<C-w>c")
+-- 	--     end
+-- 	-- end
+-- end, opts)
