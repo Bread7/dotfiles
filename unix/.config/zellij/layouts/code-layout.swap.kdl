@@ -1,0 +1,18 @@
+// Not working
+swap_tiled_layout name="code_3_panes" {
+    tab name="Code_3p" min_panes=3 {
+        pane split_direction="vertical" {
+            pane
+            pane split_direction="horizontal" {
+                pane
+            }
+        }
+    }
+    tab name="Monitor" {
+        pane {
+            command "btm"
+            // close_on_exit true
+            // start_suspended true
+        }
+    }
+}

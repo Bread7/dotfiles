@@ -9,6 +9,7 @@ return {
 				lua = { "stylua" },
 				bash = { "shellharden", "shfmt" },
 				go = { "gofumpt" },
+				-- python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 			},
 
 			format_on_save = {

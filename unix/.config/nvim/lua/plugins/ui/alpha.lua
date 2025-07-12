@@ -189,7 +189,7 @@ return {
 		dashboard.section.header.opts.position = "center"
 
 		dashboard.section.buttons.val = {
-			dashboard.button("f", " " .. " Find file", "<cmd>FzfLua files cwd=$HOME<cr>"),
+			dashboard.button("f", " " .. " Find file", "<cmd>FzfLua files cwd=$HOME/Development/<cr>"),
 			dashboard.button("r", "󱑁 " .. " Recent files", "<cmd>FzfLua oldfiles<cr>"),
 			dashboard.button("h", " " .. " Command History", "<cmd>FzfLua command_history<cr>"),
 			dashboard.button("c", " " .. " Config", "<cmd>FzfLua files cwd=$HOME/.config<cr>"),

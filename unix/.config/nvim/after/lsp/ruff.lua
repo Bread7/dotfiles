@@ -13,7 +13,15 @@ return {
 		"ruff.toml",
 		".ruff.toml",
 		".git",
+		".py",
 	},
 	single_file_support = true,
-	settings = {},
+	init_options = {
+		settings = {
+			lineLength = 80,
+			-- args = {
+			-- 	"--line-length=85",
+			-- },
+		},
+	},
 }

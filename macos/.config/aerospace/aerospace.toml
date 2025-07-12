@@ -219,6 +219,10 @@ esc   = 'mode main'
 [workspace-to-monitor-force-assignment]
 8 = [ 'secondary', 'se2717h/hx' ]
 9 = [ 'secondary', 'se2717h/hx' ]
+6 = [ 'main', 3, ]
+7 = [ 'main', 3, ]
+# 8 = [ 's2719dgf', 'secondary', 'se2717h/hx' ]
+# 9 = [ 's2719dgf', 'secondary', 'se2717h/hx' ]
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -236,8 +240,8 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = [
-  "layout floating",
-]
+# [[on-window-detected]]
+# if.app-id = "com.mitchellh.ghostty"
+# run = [
+#   "layout floating",
+# ]

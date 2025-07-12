@@ -30,6 +30,13 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("BreadLspConfig", { clear = true }),
 			callback = function(event)
+				-- Disable defaults
+				map("n", "gO", "")
+				map("n", "gri", "")
+				map("n", "grr", "")
+				map({ "x", "x" }, "gra", "")
+				map("n", "grn", "")
+
 				-- Require fzflua
 				--  To jump back, press <C-t>.
 				map("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", "LSP: Go to definitions")
@@ -41,8 +48,10 @@ return {
 				map("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", "LSP: Go to type definitions")
 				map("n", "gwd", "<cmd>FzfLua lsp_workspace_diagnostics<CR>", "LSP: Go to workspace diagnostics")
 				map("n", "gws", "<cmd>FzfLua lsp_workspace_symbols<CR>", "LSP: Go to workspace symbols")
-				map("n", "gca", "<cmd>FzfLua lsp_code_actions<CR>", "LSP: Code actions")
-				map("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>", "LSP: Format entire file")
+				-- map("n", "gca", "<cmd>FzfLua lsp_code_actions<CR>", "LSP: Code actions")
+				map({ "n", "x" }, "gca", vim.lsp.buf.code_action, "LSP: Code actions")
+				map("n", "gf", vim.lsp.buf.format, "LSP: Format entire file")
+				map("n", "grn", vim.lsp.buf.rename, "LSP: Rename symbol(s)")
 
 				-- The following two autocommands are used to highlight references of the
 				-- word under your cursor when your cursor rests there for a little while.
@@ -255,5 +264,6 @@ return {
 		-- })
 		-- Keymaps
 		map("n", "K", vim.lsp.buf.hover, "LSP: Display symbol information under cursor")
+		map({ "i", "s" }, "<C-S>", vim.lsp.buf.hover, "LSP: Display symbol information under cursor")
 	end,
 }

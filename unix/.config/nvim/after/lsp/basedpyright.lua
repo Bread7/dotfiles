@@ -23,8 +23,9 @@ return {
 				reportUnusedImport = "none", -- covered by ruff
 				typeCheckingMode = "basic", -- standard
 				useLibraryCodeForTypes = true,
+				logLevel = "Error",
 			},
-			disableOrganizeImports = false,
+			disableOrganizeImports = true,
 		},
 	},
 	single_file_support = true,

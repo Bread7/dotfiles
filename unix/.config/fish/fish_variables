@@ -9,6 +9,7 @@ SETUVAR --export --path SPOTIFY_PATH:/Applications/Spotify\x2eapp/Contents/Resou
 SETUVAR --export SSH_AGENT_PID:562661
 SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2d3atwiyCnsSMA/agent\x2e562660
 SETUVAR --export --path VALE_CONFIG_PATH:/Users/zj/\x2econfig/vale/\x2evale\x2eini
+SETUVAR --export VALE_STYLES_ATH:/Users/zj/\x2econfig/vale/styles/
 SETUVAR --export --path VALE_STYLES_PATH:/Users/zj/\x2econfig/vale/styles/
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3800

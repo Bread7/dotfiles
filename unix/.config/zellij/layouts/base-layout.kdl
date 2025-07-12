@@ -1,0 +1,105 @@
+// https://gist.github.com/xtrasmal/1a56f8bb269ff769492cc5287022ce0f
+layout {
+    // Applies status bar on top in every new tab instance
+    default_tab_template {
+        pane size=2 borderless=true {
+            plugin location="file:/$HOME/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} {session}#[fg=black,bg=#181825]{tabs}"
+                format_center ""
+                format_right  "{datetime}{notifications}#[fg=cyan]↖ "
+                format_space  ""
+                format_precedence "lrc"
+
+                border_enabled  "true"
+                border_char     "_"
+                border_format   "#[fg=#f29946]{char}"
+                border_position "bottom"
+
+                hide_frame_for_single_pane "false"
+
+                mode_normal       "#[fg=cyan]󰋑"
+                mode_locked       "#[fg=red]"
+                mode_resize       "#[fg=#cfba48,bold,italic]{name} 󰩨 "
+                mode_pane         "#[fg=#cfba48,bold,italic]{name}  "
+                mode_tab          "#[fg=#cfba48,bold,italic]{name} 󰓩 "
+                mode_scroll       "#[fg=#cfba48,bold,italic]{name}  "
+                mode_enter_search "#[fg=#cfba48,bold,italic]{name} 󰘌 "
+                mode_search       "#[fg=#cfba48,bold,italic]{name}  "
+                mode_rename_tab   "#[fg=#cfba48,bold,italic]{name} 󰑕 󰓩 "
+                mode_rename_pane  "#[fg=#cfba48,bold,italic]{name} 󰑕  "
+                mode_session      "#[fg=#cfba48,bold,italic]{name} 󰔠 "
+                mode_move         "#[fg=#cfba48,bold,italic]{name} 󰆾 "
+                mode_prompt       "#[fg=#cfba48,bold,italic]{name}  "
+
+
+                // tab_normal   "#[fg=#6C7086] {name} "
+                // tab_active   "#[fg=#9399B2,bold,italic] {name} "
+
+                // formatting for inactive tabs
+                tab_normal              "#[fg=#6C7086] {name} "
+                tab_normal_fullscreen   "#[fg=#6C7086] {name} "
+                tab_normal_sync         "#[fg=#6C7086] {name} "
+
+                // formatting for the current active tab
+                tab_active              "#[fg=magenta,bold] {name} #[fg=yellow,bold]{floating_indicator}"
+                tab_active_fullscreen   "#[fg=#9399B2,bold] {name} #[fg=yellow,bold]{fullscreen_indicator}"
+                tab_active_sync         "#[fg=#9399B2,bold] {name} #[fg=yellow,bold]{sync_indicator}"
+
+                // separator between the tabs
+                tab_separator           "#[fg=cyan,bold]|"
+
+                // indicators
+                tab_sync_indicator       " "
+                tab_fullscreen_indicator " "
+                tab_floating_indicator   ""
+                // tab_display_count         "3"  // limit to showing 3 tabs
+                // tab_truncate_start_format "#[fg=red,bg=#181825] < +{count} ..."
+                // tab_truncate_end_format   "#[fg=red,bg=#181825] ... +{count} >"
+
+                // Handled by shell
+                // command_git_branch_command     "git branch --show-current"
+                // command_git_branch_format      "#[fg=blue] {stdout} "
+                // command_git_branch_interval    "1"
+                // command_git_branch_rendermode  "static"
+
+                notification_format_unread           "#[fg=#f120f5#9315ed,blink]  #[fg=#a52ef0] {message} "
+                notification_format_no_notifications "#[fg=#f120f5,dim]   "
+                notification_show_interval           "10"
+
+                datetime        "#[fg=#6C7086,bold] {format} "
+                datetime_format "%A, %d %b %Y %H:%M"
+                datetime_timezone "Asia/Singapore"
+            }
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="file:/$HOME/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   ""
+                format_center "{pipe_zjstatus_hints}"
+                format_right  ""
+                format_space  ""
+
+                border_enabled  "true"
+                border_char     "_"
+                border_format   "#[fg=#f29946]{char}"
+                border_position "top"
+
+                pipe_zjstatus_hints_format "{output}"
+            }
+        }
+    }
+
+    tab name="Home" borderless=false focus=true {
+        pane {
+            focus true
+            name "test"
+        }
+    }
+    tab name="Monitor" borderless=false {
+        pane {
+            command "btm"
+            // close_on_exit true
+            // start_suspended true
+        }
+    }
+}

@@ -17,10 +17,13 @@ return {
 			-- { "fzf-native", },
 			-- { "telescope", "fzf-native", },
 			winopts = {
-				hl = {
-					border = "FloatBorder",
-				},
+				-- hl = {
+				-- 	border = "FloatBorder",
+				-- },
 				backdrop = 100,
+			},
+			hls = {
+				border = "FloatBorder",
 			},
 			preview = {
 				-- border = "noborder",
@@ -30,8 +33,8 @@ return {
 				-- Below are the default binds, setting any value in these tables will override
 				-- the defaults, to inherit from the defaults change [1] from `false` to `true`
 				builtin = {
-					false, -- do not inherit from defaults
 					-- neovim `:tmap` mappings for the fzf win
+					-- true,        -- uncomment to inherit all the below in your custom config
 					["<M-Esc>"] = "hide", -- hide fzf-lua, `:FzfLua resume` to continue
 					["<F1>"] = "toggle-help",
 					["<F2>"] = "toggle-fullscreen",
@@ -41,14 +44,19 @@ return {
 					-- Rotate preview clockwise/counter-clockwise
 					["<F5>"] = "toggle-preview-ccw",
 					["<F6>"] = "toggle-preview-cw",
+					-- `ts-ctx` binds require `nvim-treesitter-context`
+					["<F7>"] = "toggle-preview-ts-ctx",
+					["<F8>"] = "preview-ts-ctx-dec",
+					["<F9>"] = "preview-ts-ctx-inc",
+					["<S-Left>"] = "preview-reset",
 					["<S-down>"] = "preview-page-down",
 					["<S-up>"] = "preview-page-up",
 					["<M-S-down>"] = "preview-down",
 					["<M-S-up>"] = "preview-up",
 				},
 				fzf = {
-					false, -- do not inherit from defaults
 					-- fzf '--bind=' options
+					-- true,        -- uncomment to inherit all the below in your custom config
 					["ctrl-z"] = "abort",
 					["ctrl-u"] = "unix-line-discard",
 					["ctrl-f"] = "half-page-down",
@@ -56,8 +64,8 @@ return {
 					["ctrl-a"] = "beginning-of-line",
 					["ctrl-e"] = "end-of-line",
 					["alt-a"] = "toggle-all",
-					["alt-g"] = "last",
-					["alt-G"] = "first",
+					["alt-g"] = "first",
+					["alt-G"] = "last",
 					-- Only valid with fzf previewers (bat/cat/git/etc)
 					["f3"] = "toggle-preview-wrap",
 					["f4"] = "toggle-preview",
@@ -69,7 +77,7 @@ return {
 				-- Below are the default actions, setting any value in these tables will override
 				-- the defaults, to inherit from the defaults change [1] from `false` to `true`
 				files = {
-					false, -- do not inherit from defaults
+					-- true,        -- uncomment to inherit all the below in your custom config
 					-- Pickers inheriting these actions:
 					--   files, git_files, git_status, grep, lsp, oldfiles, quickfix, loclist,
 					--   tags, btags, args, buffers, tabs, lines, blines
@@ -82,6 +90,9 @@ return {
 					["ctrl-t"] = actions.file_tabedit,
 					["alt-q"] = actions.file_sel_to_qf,
 					["alt-Q"] = actions.file_sel_to_ll,
+					["alt-i"] = actions.toggle_ignore,
+					["alt-h"] = actions.toggle_hidden,
+					["alt-f"] = actions.toggle_follow,
 				},
 			},
 			previewers = {

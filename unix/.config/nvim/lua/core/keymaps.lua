@@ -102,6 +102,10 @@ vim.keymap.set("v", ">", ">gv", opts)
 opts.desc = "Core: Keep last yanked when pasting"
 vim.keymap.set("v", "p", '"_dP', opts)
 
+-- Add keymaps for comment
+opts.desc = "Core: Comment line"
+vim.keymap.set({ "n", "v" }, "<leader>/", ":normal gcc<CR><DOWN>", opts)
+
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })

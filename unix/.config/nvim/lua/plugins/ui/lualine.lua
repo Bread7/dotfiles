@@ -104,7 +104,17 @@ return {
 			},
 			sections = {
 				lualine_a = { mode },
-				lualine_b = { filename, "branch" },
+				lualine_b = {
+					filename,
+					"grapple",
+					-- function()
+					-- 	return require("grapple").name_or_index()
+					-- end,
+					-- function()
+					-- 	return package.loaded["grapple"] and require("grapple").exists()
+					-- end,
+					"branch",
+				},
 				lualine_c = {
 					"%=", -- [[ add center components here in place of this comment ]]
 					-- { symbols.get, cond = symbols.has},

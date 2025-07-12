@@ -17,10 +17,10 @@ end
 # VS Code cli init
 # string match -q "$TERM_PROGRAM" "vscode"
 # and . (code --locate-shell-integration-path fish)
-function code
-  set location "$PWD/$argv"
-  open -n -b "com.microsoft.VSCode" --args $location
-end
+# function code
+#   set location "$PWD/$argv"
+#   open -n -b "com.microsoft.VSCode" --args $location
+# end
 
 # Mkdir and cd combination
 function mkcd -d "Make a new directory and change into that location"
@@ -28,7 +28,6 @@ function mkcd -d "Make a new directory and change into that location"
         echo "Only accepts 1 arg"
         return
     end
-    #echo $argv[1]
     command mkdir $argv
     cd $argv
 end
@@ -55,6 +54,18 @@ set PATH $HOME/bin/ $PATH
 set XDG_CONFIG_HOME "$HOME/.config"
 
 # ASDF configs
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
 #source $HOME/.asdf/plugins/golang/set-env.fish
 set RUST_WITHOUT rust-docs
 #source $HOME/.asdf/plugins/java/set-java-home.fish
@@ -101,16 +112,10 @@ function sudo --description "Replacement for Bash 'sudo !!' command to run last 
     end
 end
 
-function nvim-config-del --description "Delete nvim configs (currently default location)"
+function nvim-state-del --description "Delete nvim configs (currently default location)"
     command sudo rm -r "$HOME/.local/share/nvim"
     command sudo rm -r "$HOME/.local/state/nvim"
 end
-
-# Modify nvim to be the main editor
-abbr oldvi vi
-abbr oldvim vim
-abbr vi nvim
-abbr vim nvim
 
 # Set path for Ghidra
 #set JAVA_HOME $HOME/Development/malware-analysis/amazon-corretto-11-jdk/Contents/Home
@@ -118,7 +123,7 @@ abbr vim nvim
 
 # Set path for Vale
 set -Ux VALE_CONFIG_PATH $HOME/.config/vale/.vale.ini
-set -Ux VALE_STYLES_PATH $HOME/.config/vale/styles/
+set -Ux VALE_STYLES_ATH $HOME/.config/vale/styles/
 
 # Set path for gpg (git signing purposes)
 #set -gx GPG_TTY "$(tty)"
@@ -132,3 +137,20 @@ source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # EDITOR configs
 set -Ux EDITOR "nvim"
 set -Ux VISUAL "nvim"
+
+# Modify nvim to be the main editor
+abbr oldvi vi
+abbr oldvim vim
+abbr vi nvim
+abbr vim nvim
+abbr llamavim "llama-server \\
+--port 8012 -ngl 99 -fa -dt 0.1 \\
+--ubatch-size 512 --batch-size 1024 \\
+--ctx-size 0 --cache-reuse 256 \\
+-m "
+
+# Direnv configs
+direnv hook fish | source
+# set -g direnv_fish_mode eval_on_arrow    # trigger direnv at prompt, and on every arrow-based directory change (default)
+# set -g direnv_fish_mode eval_after_arrow # trigger direnv at prompt, and only after arrow-based directory changes before executing command
+set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this is similar functionality to the original behavior

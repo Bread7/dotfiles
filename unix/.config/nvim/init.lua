@@ -23,7 +23,7 @@ require("lazy").setup({
 	-- { import = "plugins.unused" },
 }, {
 	checker = {
-		enabled = true,
+		enabled = false,
 		notify = false,
 	},
 	change_detection = {
