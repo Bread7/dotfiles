@@ -23,9 +23,10 @@ done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-#sudo scutil --set ComputerName "0x6D746873"
-#sudo scutil --set HostName "0x6D746873"
-#sudo scutil --set LocalHostName "0x6D746873"
+sudo scutil --set ComputerName "BreadPro"
+sudo scutil --set HostName "BreadTheSire"
+sudo scutil --set LocalHostName "BreadTheSire"
+dscacheutil -flushcache
 #sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
 
 # Disable the sound effects on boot
@@ -887,4 +888,4 @@ for app in "Activity Monitor" \
     "iCal"; do
     killall "${app}" &>/dev/null
 done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo "Done. Note that some of these changes require a restart to take effect."
