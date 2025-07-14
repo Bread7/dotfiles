@@ -27,6 +27,7 @@
 # brew install --cask microsoft-office
 # brew install microsoft-teams
 # brew install --cask zed
+# brew install --cask lunar
 
 # Uncertain brews
 cat <<EOF
