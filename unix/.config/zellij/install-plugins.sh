@@ -4,7 +4,7 @@ user_dir=$(pwd)
 work_path=$(realpath ~/.config/zellij)
 plugin_path=$work_path"/plugins"
 
-if [[ $user_dir != $work_path ]]; then
+if [[ $user_dir != $HOME/.config/zellij ]]; then
     echo "Only run this script from ~/.config/zellij directory"
     exit 1
 fi

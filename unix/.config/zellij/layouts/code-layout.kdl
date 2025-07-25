@@ -3,7 +3,8 @@ layout {
     // Applies status bar on top in every new tab instance
     default_tab_template {
         pane size=2 borderless=true {
-            plugin location="file:/$HOME/.config/zellij/plugins/zjstatus.wasm" {
+            // plugin location="file:///$HOME/.config/zellij/plugins/zjstatus.wasm" {
+            plugin location="file:/Users/zj/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   "{mode} {session}#[fg=black,bg=#181825]{tabs}"
                 format_center ""
                 format_right  "{datetime}{notifications}#[fg=cyan]↖ "
@@ -73,7 +74,8 @@ layout {
         }
         children
         pane size=2 borderless=true {
-            plugin location="file:/$HOME/.config/zellij/plugins/zjstatus.wasm" {
+            // plugin location="file:///$HOME/.config/zellij/plugins/zjstatus.wasm" {
+            plugin location="file:/Users/zj/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   ""
                 format_center "{pipe_zjstatus_hints}"
                 format_right  ""

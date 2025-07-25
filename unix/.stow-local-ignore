@@ -1,0 +1,4 @@
+# Ignore git dir
+.git/*
+README.md
+lang-setup.sh

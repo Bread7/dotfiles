@@ -6,7 +6,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # # <<< conda initialize <<<
 
 # ASDF configs
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+# source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # Set path for Nvim's image plugin
 set -Ux DYLD_LIBRARY_PATH $(brew --prefix)/lib
@@ -49,6 +49,15 @@ function ssh-init --description "Initialise private keys into system"
     end
 end
 
+function set-wallpaper --description "Set wallpapaer"
+    if test -e "$argv"
+        echo "Setting wallpaper to this image $argv"
+        osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$argv\""
+    else
+        echo "This requires a filepath argument. set-wallpaper /path/to/wallpaper.jpg"
+    end
+end
+
 # Custom FZF.fish key bindings
 set fzf_preview_file_cmd "bat --color=always --decorations=always"
 set FZF_PREVIEW_COMMAND "'bat --color=always --decorations=always --style=full --wrap=never {}'"
@@ -59,3 +68,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always --decorations=alw
 
 # Display keymaps on terminal for commonly used programs
 set newCat bat --color=always --decorations=always --style=full --wrap=never
+
+## Curl and Zellij requires brew curl
+fish_add_path /opt/homebrew/opt/curl/bin
+
+set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"

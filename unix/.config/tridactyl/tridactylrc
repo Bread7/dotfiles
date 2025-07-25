@@ -181,6 +181,7 @@ unbind --mode=normal <M-]>
 unbind <C-d>
 unbind <C-u>
 unbind ZZ
+unbind t
 
 " " " Scroll
 bind J scrollpage 0.5
@@ -194,6 +195,11 @@ bind --mode=normal <M-]> tabnext
 "bind T composite js prompt("Container to open current tab in: ") | current_url tabopen -c "" Open current url in specific container
 bind T composite js prompt("Container to open current tab in, leave empty to exit container: ") | recontain
 
+" " " Containers
+" " " " Make all tabs open in default container
+set autocontainmode strict
+bind t fillcmdline tabopen -c general
+
 
 " " " Search Mode
 bind / fillcmdline find
@@ -206,4 +212,6 @@ bind ,<Space> nohlsearch
 " set blacklistadd monkeytype.com
 
 " " " Themne
-colourscheme --url https://raw.githubusercontent.com/dracula/tridactyl/main/dracula.css dracula
+" colourscheme --url https://raw.githubusercontent.com/dracula/tridactyl/main/dracula.css dracula
+" " " " Load the theme from local directory
+colours dracula

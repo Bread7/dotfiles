@@ -11,10 +11,12 @@ return {
 		"nvim-neotest/nvim-nio",
 		"leoluz/nvim-dap-go",
 		"mfussenegger/nvim-dap-python",
+		"igorlfs/nvim-dap-view",
 	},
 	config = function()
 		local dap = require("dap")
-		local dapui = require("dapui")
+		-- local dapui = require("dapui")
+		local dapview = require("dap-view")
 		local dap_virt_text = require("nvim-dap-virtual-text")
 		local dap_go = require("dap-go")
 		local registry = require("mason-registry")
@@ -23,12 +25,64 @@ return {
 			vim.keymap.set(mode, l, r, { silent = true, desc = desc })
 		end
 
-		dapui.setup({})
+		-- Custom highlights
+		vim.fn.sign_define("DapBreakpoint", {
+			text = "󰐝 ",
+			texthl = "DiagnosticSignInfo",
+			linehl = "",
+			numhl = "",
+		})
+
+		vim.fn.sign_define("DapBreakpointRejected", {
+			text = " ", -- or "❌"
+			texthl = "DiagnosticSignError",
+			linehl = "",
+			numhl = "",
+		})
+
+		vim.fn.sign_define("DapStopped", {
+			text = " ", -- or "→"
+			texthl = "DiagnosticSignWarn",
+			linehl = "Visual",
+			numhl = "DiagnosticSignWarn",
+		})
+
+		vim.fn.sign_define("DapLogPoint", {
+			text = " ",
+			texthl = "DiagnosticSignOk",
+			linehl = "Visual",
+			numhl = "DiagnosticSignOk",
+		})
+
+		vim.fn.sign_define("DapBreakpointCondition", {
+			text = " ",
+			texthl = "DiagnosticInfo",
+			linehl = "",
+			numhl = "",
+		})
+
+		dapview.setup({
+			winbar = {
+				controls = {
+					enabled = true,
+				},
+				sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
+				default_section = "scopes",
+			},
+			windows = {
+				terminal = {
+					position = "left",
+					start_hidden = true,
+				},
+			},
+		})
+		-- dapui.setup({})
 
 		dap_virt_text.setup({
 			-- Only available after nvim v0.10
-			virt_text_pos = "inline",
-			-- vim.fn.has("nvim-0.10") == 1 and "inline" or "eol",
+			-- virt_text_pos = vim.fn.has("nvim-0.10") == 1 and "inline" or "eol",
+			virt_text_pos = "eol",
+			commented = true,
 		})
 		dap_go.setup({})
 
@@ -55,37 +109,39 @@ return {
 		-- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
 		require("dap-python").setup("uv")
 		require("dap-python").test_runner = "pytest"
-		dap.configurations.python = {
-			type = "python",
-			request = "launch",
-			name = "Python DAP",
-			program = "${file}", -- Launch current file if used
-			-- django = true,
-			jinja = true,
-			console = "integratedTerminal",
-		}
 
 		-- DAP keymaps
 		map({ "n" }, "<leader>dt", dap.toggle_breakpoint, "DAP: Toggle breakpoint")
 		map({ "n" }, "<leader>dc", dap.continue, "DAP: Continue next process")
-		map({ "n" }, "<leader>dc", dap.continue, "DAP: Continue next process")
-		map({ "n" }, "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", "DAP-UI: Toggle UI")
-		map({ "n" }, "<leader>?", function()
-			require("dapui").eval(nil, { enter = true })
-		end, "DAP: Eval var under cursor")
+		map({ "n" }, "<leader>do", dap.step_over, "DAP: Step over next process")
+		map({ "n" }, "<leader>di", dap.step_into, "DAP: Step into next process")
+		map({ "n" }, "<leader>dO", dap.step_out, "DAP: Step out next process")
+		map({ "n" }, "<leader>dq", dap.terminate, "DAP: Terminate debugging")
+		map({ "n" }, "<leader>du", dapview.toggle, "DAP-View: Toggle UI")
+		map({ "n" }, "<leader>dw", dapview.add_expr, "DAP: Add cursor word into Watch")
+		map({ "n" }, "<leader>de", require("dap.ui.widgets").hover, "DAP: Hover cursor value")
+		-- map({ "n" }, "<leader>du", "<cmd>lua require('dap-view').toggle()<cr>", "DAP-UI: Toggle UI")
+		-- map({ "n" }, "<leader>de", function()
+		-- 	require("dapui").eval(nil, { enter = true })
+		-- end, "DAP: Eval var under cursor")
+		-- -- https://www.reddit.com/r/neovim/comments/1ge0al4/is_it_possible_to_add_variable_to_watch_list_at/
+		-- map({ "n" }, "<leader>dw", require("dapui").elements.watches.add, "DAP: Add cursor word into Watch")
 
 		-- Events to handle windows for UI
-		dap.listeners.before.attach.dapui_config = function()
-			dapui.open()
+		dap.listeners.after.event_initialized["dapview_config"] = function()
+			dapview.open()
 		end
-		dap.listeners.before.launch.dapui_config = function()
-			dapui.open()
-		end
-		dap.listeners.before.event_terminated.dapui_config = function()
-			dapui.close()
-		end
-		dap.listeners.before.event_exited.dapui_config = function()
-			dapui.close()
-		end
+		-- dap.listeners.before.attach.dapui_config = function()
+		-- 	dapui.open()
+		-- end
+		-- dap.listeners.before.launch.dapui_config = function()
+		-- 	dapui.open()
+		-- end
+		-- dap.listeners.before.event_terminated.dapui_config = function()
+		-- 	dapui.close()
+		-- end
+		-- dap.listeners.before.event_exited.dapui_config = function()
+		-- 	dapui.close()
+		-- end
 	end,
 }

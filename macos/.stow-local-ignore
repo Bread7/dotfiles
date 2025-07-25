@@ -1,4 +1,8 @@
 # Ignore git dir
 .git/*
 README.md
-# Library/*
+Brewfile
+macos_settings
+setup.sh
+vram.sh
+duti.sh

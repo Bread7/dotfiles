@@ -7,6 +7,28 @@ return {
 				--     start = "ga",
 				--     start_with_preview = "gA",
 				-- },
+				-- Modifiers changing alignment steps and/or options
+				-- modifiers = {
+				--     -- Main option modifiers
+				--     ['s'] = --<function: enter split pattern>,
+				--     ['j'] = --<function: choose justify side>,
+				--     ['m'] = --<function: enter merge delimiter>,
+				--
+				--     -- Modifiers adding pre-steps
+				--     ['f'] = --<function: filter parts by entering Lua expression>,
+				--     ['i'] = --<function: ignore some split matches>,
+				--     ['p'] = --<function: pair parts>,
+				--     ['t'] = --<function: trim parts>,
+				--
+				--     -- Delete some last pre-step
+				--     ['<BS>'] = --<function: delete some last pre-step>,
+				--
+				--     -- Special configurations for common splits
+				--     ['='] = --<function: enhanced setup for '='>,
+				--     [','] = --<function: enhanced setup for ','>,
+				--     ['|'] = --<function: enhanced setup for '|'>,
+				--     [' '] = --<function: enhanced setup for ' '>,
+				-- },
 			})
 
 			-- require("mini.animate").setup({})
@@ -51,16 +73,16 @@ return {
 				-- Module mappings. Use `''` (empty string) to disable one.
 				mappings = {
 					-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-					left = "<M-h>",
-					right = "<M-l>",
-					down = "<M-j>",
-					up = "<M-k>",
+					left = "<C-S-h>",
+					right = "<C-S-l>",
+					down = "<C-S-j>",
+					up = "<C-S-k>",
 
 					-- Move current line in Normal mode
-					line_left = "<M-h>",
-					line_right = "<M-l>",
-					line_down = "<M-j>",
-					line_up = "<M-k>",
+					line_left = "<C-S-h>",
+					line_right = "<C-S-l>",
+					line_down = "<C-S-j>",
+					line_up = "<C-S-k>",
 				},
 
 				-- Options which control moving behavior
@@ -115,7 +137,23 @@ return {
 				-- useful to not show trailing whitespace where it usually doesn't matter.
 				only_in_normal_buffers = true,
 			})
-            vim.keymap.set({ "n", }, "<leader>tt", "<cmd>lua MiniTrailspace.trim()<cr>", { silent = true, desc = "Mini.Trailspace: Trim current line"})
+			vim.keymap.set(
+				{ "n" },
+				"<leader>tt",
+				"<cmd>lua MiniTrailspace.trim()<cr>",
+				{ silent = true, desc = "Mini.Trailspace: Trim current line" }
+			)
+
+			require("mini.bufremove").setup({})
+
+			require("mini.comment").setup({
+				options = {
+					ignore_blank_line = true,
+					start_of_line = true,
+				},
+			})
+
+			require("mini.tabline").setup({})
 		end,
 	},
 }

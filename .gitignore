@@ -7,3 +7,4 @@ unix/.config/spicetify/Backup/*
 unix/.config/spicetify/Extracted/*
 *.gif
 linux-specific.fish
+unix/.config/zellij/plugins/*

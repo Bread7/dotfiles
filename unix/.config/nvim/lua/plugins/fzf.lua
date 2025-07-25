@@ -88,11 +88,11 @@ return {
 					["ctrl-s"] = actions.file_split,
 					["ctrl-v"] = actions.file_vsplit,
 					["ctrl-t"] = actions.file_tabedit,
-					["alt-q"] = actions.file_sel_to_qf,
-					["alt-Q"] = actions.file_sel_to_ll,
-					["alt-i"] = actions.toggle_ignore,
-					["alt-h"] = actions.toggle_hidden,
-					["alt-f"] = actions.toggle_follow,
+					["ctrl-q"] = actions.file_sel_to_qf,
+					["ctrl-Q"] = actions.file_sel_to_ll,
+					["ctrl-i"] = actions.toggle_ignore,
+					["ctrl-h"] = actions.toggle_hidden,
+					["ctrl-f"] = actions.toggle_follow,
 				},
 			},
 			previewers = {
@@ -148,11 +148,11 @@ return {
 		map("n", "<leader>fgf", "<cmd>FzfLua git_files<CR>", "Fuzzy all files for any git status")
 		map("n", "<leader>fgs", "<cmd>FzfLua git_status<CR>", "Fuzzy all git status changes in current repo")
 		map("n", "<leader>fgt", "<cmd>FzfLua git_tags<CR>", "Fuzzy all git tags in current repo")
-		map("n", "<leader>fgv", "<cmd>FzfLua grep_visual<CR>", "Fuzzy grep in visual mode")
+		-- map("n", "<leader>fgv", "<cmd>FzfLua grep_visual<CR>", "Fuzzy grep in visual mode")
 		map("n", "<leader>fk", "<cmd>FzfLua keymaps<CR>", "Fuzzy all keymaps")
-		map("n", "<leader>flg", "<cmd>FzfLua live_grep<CR>", "Fuzzy live grep by passing args")
+		-- map("n", "<leader>flg", "<cmd>FzfLua live_grep<CR>", "Fuzzy live grep by passing args")
 		map("n", "<leader>ft", "<cmd>FzfLua tags<CR>", "Fuzzy tagged files")
-		map("n", "<leader>ftg", "<cmd>FzfLua tags_grep<CR>", "Fuzzy tagged files with grep")
+		-- map("n", "<leader>ftg", "<cmd>FzfLua tags_grep<CR>", "Fuzzy tagged files with grep")
 		map("n", "<leader>fw", "<cmd>FzfLua tabs<CR>", "Fuzzy tabs in current neovim process")
 		map("n", "<leader>fr", [[<cmd>lua require("fzf-lua").registers()<CR>]], "Fuzzy all registers")
 	end,

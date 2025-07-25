@@ -7,5 +7,6 @@ if type -q yazi;
         end
         rm -f -- "$tmp"
     end
+    abbr oldyazi yazi
     abbr yazi yz
 end

@@ -30,12 +30,10 @@ ssh -vT git@github.com
 
 Refer: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
-
 ## Submodules
 
 Inital setup: `git submodule update --recursive --remote` or `git submodules update --init --recursive`
 Subsequece updates: `git pull --recurse-submodules`
-
 
 ## Dependencies
 
@@ -50,6 +48,10 @@ stow --target=$HOME <dir name>
 ```sh
 vale sync
 ```
+
+## Post Repo Setup
+
+Follow dotfiles-private/ to setup GPG keys
 
 ## Future todos
 

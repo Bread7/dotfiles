@@ -13,7 +13,7 @@ abbr oldcat "cat"
 abbr imgcat "wezterm imgcat"
 
 # Dust configs
-abbr dust "dust --ignore_hidden"
+abbr dust "dust --ignore-hidden"
 
 # Eza configs
 #set EZA_CONFIG_DIR "~/.config/eza"
@@ -64,20 +64,25 @@ set YAZI_CONFIG_HOME "$HOME/.config/yazi"
 # FZF configs
 fzf --fish | source
 ## Rose Pine Moon - https://github.com/rose-pine/fzf/blob/main/dist/rose-pine-moon.fish
-set -Ux FZF_COLOUR_OPTS "
-                       --color=fg:#908caa,bg:#232136,hl:#ea9a97
- 	                     --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
-                       --color=border:#44415a,header:#3e8fb0,gutter:#232136
-                       --color=spinner:#f6c177,info:#9ccfd8
-                       --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
-                       --multi"
+# set FZF_COLOUR_OPTS "--color=fg:#908caa,bg:#232136,hl:#ea9a97 \
+#  	                     --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97 \
+#                        --color=border:#44415a,header:#3e8fb0,gutter:#232136 \
+#                        --color=spinner:#f6c177,info:#9ccfd8 \
+#                        --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa \
+#                        --multi"
 ## Catppuccin Mocha theme - https://github.com/catppuccin/fzf
-#set -Ux FZF_COLOUR_OPTS "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-  #                        --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-  #                    --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-  #                    --color=selected-bg:#45475a \
-  #                    --multi \
-  #                    "
+set FZF_COLOUR_OPTS "--color=bg+:#73436b,bg:#061a2e,spinner:#f5e0dc,hl:#f38ba8 \
+                         --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+                     --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+                     --color=selected-bg:#45475a \
+                     --multi "
+# set FZF_COLOUR_OPTS " \
+# 	--color=fg:#908caa,bg:#191724,hl:#ebbcba \
+# 	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba \
+# 	--color=border:#403d52,header:#31748f,gutter:#191724 \
+# 	--color=spinner:#f6c177,info:#9ccfd8 \
+# 	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa "
+
 set FZF_DEFAULT_COMMAND "fd --hidden --no-ignore --type file --strip-cwd-prefix --color=always --exclude .git"
 set FZF_ALT_COMMAND "rg -uu --files --with-filename --pretty"
 set FZF_MOVEMENTS "--bind='ctrl-e:execute(nvim {})' \

@@ -126,7 +126,7 @@ set -Ux VALE_CONFIG_PATH $HOME/.config/vale/.vale.ini
 set -Ux VALE_STYLES_ATH $HOME/.config/vale/styles/
 
 # Set path for gpg (git signing purposes)
-#set -gx GPG_TTY "$(tty)"
+set -gx GPG_TTY "$(tty)"
 
 # For quick one time ssh
 abbr ssh1 "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o \"LogLevel ERROR\""
@@ -154,3 +154,5 @@ direnv hook fish | source
 # set -g direnv_fish_mode eval_on_arrow    # trigger direnv at prompt, and on every arrow-based directory change (default)
 # set -g direnv_fish_mode eval_after_arrow # trigger direnv at prompt, and only after arrow-based directory changes before executing command
 set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this is similar functionality to the original behavior
+
+export PATH="$PATH:$HOME/.local/bin"

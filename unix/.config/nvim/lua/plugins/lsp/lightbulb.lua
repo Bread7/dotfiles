@@ -8,14 +8,10 @@ return {
 	config = function()
 		local lightbulb = require("nvim-lightbulb")
 		lightbulb.setup({
-			priority = 10,
 			hide_in_unfocused_buffer = false,
 			link_highlights = true,
 			sign = {
 				enabled = false,
-				text = "💡",
-				-- Highlight group to highlight the sign column text.
-				hl = "LightBulbSign",
 			},
 			virtual_text = {
 				enabled = true,
@@ -30,32 +26,22 @@ return {
 				-- See `hl_mode` of |nvim_buf_set_extmark|.
 				hl_mode = "combine",
 			},
-            float = {
-                enabled = false,
-            },
-            status_text = {
-                enabled = false,
-                text = "💡",
-                text_unavailable = "",
-            },
-            number = {
-                enabled = false,
-                hl = "LightBulbNumber",
-            },
-            line = {
-                enabled = false,
-                hl = "LightBulbLine",
-            },
+			float = {
+				enabled = false,
+			},
+			status_text = {
+				enabled = false,
+			},
 			autocmd = {
-                enabled = true
-            },
-            ignore = {
-                ft = {
-                    "Avante",
-                    "Alpha",
-                    "Dashboard",
-                }
-            }
+				enabled = true,
+			},
+			ignore = {
+				ft = {
+					"Avante",
+					"Alpha",
+					"Dashboard",
+				},
+			},
 		})
 	end,
 }
