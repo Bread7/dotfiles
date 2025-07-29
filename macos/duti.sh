@@ -6,3 +6,4 @@ if ! command -v duti; then
 fi
 
 duti -s com.qoppa.PDFStudio pdf all
+duti -s com.apple.automator.nvim py all

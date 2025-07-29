@@ -92,7 +92,17 @@ echo "Configuring MacOS screen with 2560x1600 120hz resolution"
 displayplacer "id:$ID res:2560x1600 hz:120 color_depth:8 scaling:off origin:(0,0) degree:0"
 
 #####################################################################################################
-# Uncertain brews
+# Setting bat themes
+#####################################################################################################
+if ! command -v bat; then
+    echo "Bat not found. Please install bat first."
+    exit 1
+fi
+
+bat cache --build
+
+#####################################################################################################
+# Setting default browser
 #####################################################################################################
 echo "Setting firefox as default browser"
 brew install defaultbrowser

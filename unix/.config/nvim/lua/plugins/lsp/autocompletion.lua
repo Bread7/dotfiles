@@ -22,8 +22,8 @@ return { -- Autocompletion
 				{
 					"rafamadriz/friendly-snippets",
 					config = function()
-					    -- Load default friendly-snippets
-                        require("luasnip.loaders.from_vscode").lazy_load()
+						-- Load default friendly-snippets
+						require("luasnip.loaders.from_vscode").lazy_load()
 						-- Integrate with nvim-scissors
 						require("luasnip.loaders.from_vscode").lazy_load({
 							paths = { "./../../code-snippets/" },
@@ -49,32 +49,42 @@ return { -- Autocompletion
 
 		luasnip.filetype_extend("markdown", { "json", "text" })
 		local kind_icons = {
-			Text = "󰉿",
-			Method = "m",
-			Function = "󰊕",
-			Constructor = "",
-			Field = "",
-			Variable = "󰆧",
-			Class = "󰌗",
-			Interface = "",
-			Module = "",
-			Property = "",
-			Unit = "",
-			Value = "󰎠",
-			Enum = "",
-			Keyword = "󰌋",
-			Snippet = "",
-			Color = "󰏘",
-			File = "󰈙",
-			Reference = "",
-			Folder = "󰉋",
-			EnumMember = "",
-			Constant = "󰇽",
-			Struct = "",
-			Event = "",
-			Operator = "󰆕",
-			TypeParameter = "󰊄",
+			Text = "󰉿 ",
+			Method = "m ",
+			Function = "󰊕 ",
+			Constructor = " ",
+			Field = " ",
+			Variable = "󰆧 ",
+			Class = "󰌗 ",
+			Interface = " ",
+			Module = " ",
+			Property = " ",
+			Unit = " ",
+			Value = "󰎠 ",
+			Enum = " ",
+			Keyword = "󰌋 ",
+			Snippet = " ",
+			Color = "󰏘 ",
+			File = "󰈙 ",
+			Reference = " ",
+			Folder = "󰉋 ",
+			EnumMember = " ",
+			Constant = "󰇽 ",
+			Struct = " ",
+			Event = " ",
+			Operator = "󰆕 ",
+			TypeParameter = "󰊄 ",
+			Copilot = " ",
 		}
+
+		local has_words_before = function()
+			if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+				return false
+			end
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+		end
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -91,7 +101,7 @@ return { -- Autocompletion
 				-- Select the [n]ext item
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				-- Select the [p]revious item
-				["<C-p>"] = cmp.mapping.select_prev_item(),
+				["<C-S-n>"] = cmp.mapping.select_prev_item(),
 
 				-- Scroll the documentation window [b]ack / [f]orward
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -107,6 +117,9 @@ return { -- Autocompletion
 				--['<CR>'] = cmp.mapping.confirm { select = true },
 				--['<Tab>'] = cmp.mapping.select_next_item(),
 				--['<S-Tab>'] = cmp.mapping.select_prev_item(),
+				["<CR>"] = vim.NIL,
+				["<Tab>"] = vim.NIL,
+				["<S-Tab>"] = vim.NIL,
 
 				-- Manually trigger a completion from nvim-cmp.
 				--  Generally you don't need this, because nvim-cmp will display
@@ -135,7 +148,7 @@ return { -- Autocompletion
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 				-- Select next/previous item with Tab / Shift + Tab
-				["<Tab>"] = cmp.mapping(function(fallback)
+				["<C-n>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
 					elseif luasnip.expand_or_locally_jumpable() then
@@ -144,7 +157,7 @@ return { -- Autocompletion
 						fallback()
 					end
 				end, { "i", "s" }),
-				["<S-Tab>"] = cmp.mapping(function(fallback)
+				["<C-S-n>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
 					elseif luasnip.locally_jumpable(-1) then
@@ -160,11 +173,12 @@ return { -- Autocompletion
 					-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
 					group_index = 0,
 				},
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "marksman" },
-				{ name = "buffer" },
-				{ name = "path" },
+				{ name = "nvim_lsp", group_index = 2 },
+				{ name = "luasnip", group_index = 2 },
+				{ name = "copilot", group_index = 2 },
+				{ name = "buffer", group_index = 2 },
+				{ name = "path", group_index = 2 },
+				{ name = "marksman", group_index = 2 },
 			},
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
@@ -173,6 +187,7 @@ return { -- Autocompletion
 					vim_item.menu = ({
 						nvim_lsp = "[LSP]",
 						luasnip = "[Snippet]",
+						copilot = "[Copilot]",
 						buffer = "[Buffer]",
 						path = "[Path]",
 					})[entry.source.name]

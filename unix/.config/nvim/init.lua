@@ -20,6 +20,7 @@ require("lazy").setup({
 	{ import = "plugins.marks" },
 	{ import = "plugins.ui" },
 	{ import = "plugins.file" },
+	{ import = "plugins.llm" },
 	-- { import = "plugins.unused" },
 }, {
 	checker = {

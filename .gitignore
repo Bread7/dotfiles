@@ -1,4 +1,5 @@
 .DS_Store
+.env
 rizin/
 __pycache__/
 unix/.config/vale/styles/
@@ -8,3 +9,9 @@ unix/.config/spicetify/Extracted/*
 *.gif
 linux-specific.fish
 unix/.config/zellij/plugins/*
+macos/.gnupg/*
+!gpg-agent-linux.conf
+!gpg-agent.conf
+!gpg.conf
+*.toml-*
+unix/.config/zed/prompts/*

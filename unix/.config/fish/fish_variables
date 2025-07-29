@@ -57,4 +57,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d434c5e
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/opt/homebrew/opt/rustup/bin\x1e/opt/homebrew/opt/curl/bin\x1e/Users/zj/\x2erustup/toolchains/stable\x2daarch64\x2dapple\x2ddarwin/bin\x1e/home/breadthesire/\x2elocal/bin\x1e/home/breadthesire/\x2easdf/installs/golang/1\x2e23\x2e3/bin\x1e/opt/homebrew/opt/postgresql\x4015/bin\x1e/Users/zj/\x2easdf/installs/golang/1\x2e23\x2e1/bin\x1e/opt/homebrew/opt/libpcap/bin\x1e/Users/zj/Development/malware\x2danalysis/amazon\x2dcorretto\x2d11\x2djdk/Contents/Home\x1e/Users/zj/Development/malware\x2danalysis/amazon\x2dcorretto\x2d11\x2djdk\x1e/opt/homebrew/bin
+SETUVAR fish_user_paths:/opt/homebrew/opt/rustup/bin\x1e/opt/homebrew/opt/curl/bin\x1e/opt/homebrew/opt/libpcap/bin
