@@ -1,12 +1,12 @@
 return {
 	"ibhagwan/fzf-lua",
-	-- lazy = true,
-	-- event = "VeryLazy",
+	lazy = true,
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 
 		-- Terminal based dependencies
-		-- fzf, fd, rg, bat, delta, nvim-dap (not in use yet)
+		-- fzf, fd, rg, bat, delta, nvim-dap
 	},
 	config = function()
 		-- Set FzfLua as UI
@@ -122,6 +122,14 @@ return {
 				actions = {
 					["default"] = actions.file_edit_or_qf,
 					["ctrl-q"] = actions.file_sel_to_qf,
+				},
+			},
+			keymaps = {
+				show_details = false,
+				winopts = {
+					preview = {
+						layout = "vertical",
+					},
 				},
 			},
 		})

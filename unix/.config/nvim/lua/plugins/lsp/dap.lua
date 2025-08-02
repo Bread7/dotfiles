@@ -12,6 +12,7 @@ return {
 		"leoluz/nvim-dap-go",
 		"mfussenegger/nvim-dap-python",
 		"igorlfs/nvim-dap-view",
+		"stevearc/overseer.nvim",
 	},
 	config = function()
 		local dap = require("dap")
@@ -20,6 +21,7 @@ return {
 		local dap_virt_text = require("nvim-dap-virtual-text")
 		local dap_go = require("dap-go")
 		local registry = require("mason-registry")
+		local overseer = require("overseer")
 
 		local function map(mode, l, r, desc)
 			vim.keymap.set(mode, l, r, { silent = true, desc = desc })
@@ -143,5 +145,8 @@ return {
 		-- dap.listeners.before.event_exited.dapui_config = function()
 		-- 	dapui.close()
 		-- end
+
+		-- This is used to run preLaunchTask and postDebugTask for debuggers with .vscode/launch.json
+		overseer.setup()
 	end,
 }

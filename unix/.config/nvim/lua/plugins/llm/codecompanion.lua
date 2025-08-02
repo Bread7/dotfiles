@@ -4,7 +4,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"nvim-treesitter/nvim-treesitter-textobjects",
+			-- "nvim-treesitter/nvim-treesitter-textobjects",
 			"ravitemer/mcphub.nvim",
 		},
 		config = function(_, opts)
