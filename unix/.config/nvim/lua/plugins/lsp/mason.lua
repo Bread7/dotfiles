@@ -31,8 +31,10 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				-- "pyright",
-				"pylsp",
+				-- "pylsp",
+				"ty",
 				"basedpyright",
+				"tombi",
 				"rust_analyzer",
 				"dockerls",
 				"docker_compose_language_service",
@@ -53,10 +55,10 @@ return {
 				"jsonls",
 				"yamlls",
 				"pbls",
-				"lemminx",
-				"ansiblels",
+				-- "lemminx",
+				-- "ansiblels",
 				"bashls",
-				"asm_lsp",
+				-- "asm_lsp",
 				"marksman",
 				-- "remark_ls",
 				"ltex",
@@ -66,6 +68,10 @@ return {
 				"vimls",
 				"zls",
 			},
+			-- automatic_enable = {
+			-- 	exclude = {
+			-- 	},
+			-- },
 		})
 
 		-- Make sure to adjust `none-ls.lua setup` to add opts for each
@@ -74,9 +80,9 @@ return {
 			ensure_installed = {
 				"prettier", -- Prettier formatter
 				"stylua", -- Lua formatter
-				-- "isort",        -- Python formatter
-				-- "black",        -- Python formatter
-				-- "pylint",       -- Python formatter
+				-- "isort",    -- Python formatter
+				-- "black",    -- Python formatter
+				-- "pylint",   -- Python formatter
 				"ruff", -- Python LSP, linter & formatter
 				"eslint_d", -- Javascript linter
 				"shellharden", -- Bash linter & formatter
