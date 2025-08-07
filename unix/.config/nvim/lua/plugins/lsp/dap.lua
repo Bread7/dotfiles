@@ -57,7 +57,7 @@ return {
 		})
 
 		vim.fn.sign_define("DapBreakpointCondition", {
-			text = " ",
+			text = "󰈼 ",
 			texthl = "DiagnosticInfo",
 			linehl = "",
 			numhl = "",

@@ -32,7 +32,7 @@ return {
 				"lua_ls",
 				-- "pyright",
 				-- "pylsp",
-				"ty",
+				-- "ty",
 				"basedpyright",
 				"tombi",
 				"rust_analyzer",
