@@ -7,7 +7,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
-		vim.o.foldcolumn = "0" -- '1' to show arrows
+		vim.o.foldcolumn = "1" -- '1' to show arrows and '0' to hide arrows
 		vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true

@@ -134,7 +134,8 @@ return {
 
 			local git_branch_section = {
 				type = "text",
-				val = " " .. git_repo .. ":" .. string.sub(git_branch, 5, #git_branch),
+				-- val = " " .. git_repo .. ":" .. string.sub(git_branch, 5, #git_branch),
+				val = " " .. git_repo .. ":" .. git_branch,
 				opts = { position = "center" },
 			}
 

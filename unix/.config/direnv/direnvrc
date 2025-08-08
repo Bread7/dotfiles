@@ -25,3 +25,14 @@ function setup_uv() {
 
     uv sync
 }
+
+function setup_uv_full() {
+    source_up_if_exists
+    dotenv_if_exists
+    source_env_if_exists .envrc.local
+
+    uv venv
+    source .venv/bin/activate
+
+    uv sync --refresh --reinstall --all-extras
+}
