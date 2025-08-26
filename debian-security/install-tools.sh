@@ -4,9 +4,9 @@ if [[ ${EUID} -ne 0 ]]; then
     echo "[!] root permissions required." 1>&2
     echo "[!] use 'sudo -E ./install-tools.sh' to preserver environment settings"
     exit 1
-else
-    echo "Installing Additional Tools with root permissions"
 fi
+
+echo "Installing Additional Tools with root permissions"
 
 update() {
     echo "Updating apt"

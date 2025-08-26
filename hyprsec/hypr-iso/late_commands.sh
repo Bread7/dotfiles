@@ -5,6 +5,8 @@
 # https://github.com/cn246-admin/mkiso
 # https://github.com/Bread7/dotfiles/blob/main/debian-security/debian-security.md
 
+set -x
+
 post_setup() {
     # Add user into sudo group
     # Make sure to adjust the value of the user
@@ -36,13 +38,13 @@ Package: src:chromium src:firefox src:firefox-esr src:linux src:linux-signed-amd
 Explanation: these packages are always security updates updated in unstable first
 Pin: release a=/^(unstable|unstable-debug|buildd-unstable|buildd-unstable-debug)$/
 Pin-Priority: 980
-    EOF
+EOF
 
     cat > /etc/apt/sources.list.d/parrot.list << EOF
 deb https://deb.parrot.sh/parrot lory main contrib non-free non-free-firmware
 deb https://deb.parrot.sh/parrot lory-security main contrib non-free non-free-firmware
 deb https://deb.parrot.sh/parrot lory-backports main contrib non-free non-free-firmware
-    EOF
+EOF
 
     cat > /etc/apt/preferences.d/parrot-pin << EOF
 Package: *
@@ -76,9 +78,9 @@ Pin-Priority: 300
 Package: *
 Pin: release a=parrot-security
 Pin-Priority: 300
-    EOF
+EOF
 
-    curl -fsSL https://deb.parrot.sh/parrot/keyring.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/parrot-archive-keyring.gpg
+    # curl -fsSL https://deb.parrot.sh/parrot/keyring.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/parrot-archive-keyring.gpg
 
     # Handle packages
     apt update
@@ -87,7 +89,7 @@ Pin-Priority: 300
     mkdir -p /home/bread/core
 
     # Get latest dotfiles
-    git clone git@github.com:Bread7/dotfiles.git /home/bread/core/dotfiles
+    git clone https://github.com/Bread7/dotfiles.git /home/bread/core/dotfiles
 
     exit 0
 }
