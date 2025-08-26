@@ -1,0 +1,153 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["hyprland/workspaces", "sway/workspaces", "wlr/taskbar", "hyprland/window", "sway/mode", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "network", "custom/storage", "pulseaudio", "custom/powermenu"],
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1 <span font='Font Awesome 5 Free 11'> </span>",
+            "2": "2 <span font='Font Awesome 5 Free 11'> </span>",
+            "3": "3 <span font='Font Awesome 5 Free 11'> </span>",
+            "4": "4 <span font='Font Awesome 5 Free 11'> </span>",
+            "5": "5 <span font='Font Awesome 5 Free 11'> </span>",
+            "6": "6 <span font='Font Awesome 5 Free 11'> </span>"
+        }
+    },
+    "sway/window": {
+        "max-length": 60,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%a %d %b - %H:%M}",
+        "on-click": "wezterm -e calcure",
+    },
+    "hyprland/window": {
+        "format": "{initialTitle}",
+        "separate-outputs": true,
+        "rewrite": {
+        },
+    },
+    "hyprland/workspaces": {
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "󰅶",
+            "5": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 3,
+        },
+    },
+    "idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+    "custom/powermenu": {
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/powermenu.sh",
+        "format": "<span font='Font Awesome 5 Free 9'>{icon}</span>  {}",
+        "format-icons": [""],
+        "interval": 3600,
+        "escape": true,
+        "on-click": "~/.config/waybar/scripts/powermenu.sh"
+    },
+    "battery": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}h{M}m",
+        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": false,
+        "on-click": "2"
+    },
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-wifi": "<span font='Font Awesome 5 Free 10'></span>  {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "nm-connection-editor",
+        // "on-click": "gnome-control-center wifi",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> {volume:4}% ",
+        "format-bluetooth": "<span font='Font Awesome 5 Free 11'> {icon:2}</span> {volume:4}% ",
+        "format-alt": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> {volume:4}%",
+        "format-alt-click": "click-right",
+        "format-muted": "<span font='Font Awesome 5 Free 11'>nf-md-volume_mute󰝟 </span>",
+        "format-icons": {
+            "headphone": [" ", " ", " ", " "],
+            "default": ["", "", "", ""]
+        },
+        "scroll-step": 2,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/storage": {
+        "format": "{} ",
+        "format-alt": "{percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/scripts/storage.sh"
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": ["", ""],
+        "on-scroll-down": "light -A 1",
+        "on-scroll-up": "light -U 1"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 18
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Flat-Remix-Violet-Dark",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {} {icon} ",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which mako",
+        "exec": "( makoctl list | jq -e '.data[] | length > 0' >/dev/null && echo '\nDismiss Notifications\n' ) || echo '\nNo Notifications\nnone' ",
+        "on-click": "makoctl dismiss -a",
+      },
+}
