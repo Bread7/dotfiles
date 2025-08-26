@@ -138,3 +138,7 @@ export PATH="$PATH:$HOME/.local/bin"
 # end
 # set --erase _asdf_shims
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/zj/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

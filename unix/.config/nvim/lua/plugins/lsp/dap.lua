@@ -118,6 +118,8 @@ return {
 		map({ "n" }, "<leader>do", dap.step_over, "DAP: Step over next process")
 		map({ "n" }, "<leader>di", dap.step_into, "DAP: Step into next process")
 		map({ "n" }, "<leader>dO", dap.step_out, "DAP: Step out next process")
+		map({ "n" }, "<leader>db", dap.step_back, "DAP: Step back previous process")
+		map({ "n" }, "<leader>dB", dap.reverse_continue, "DAP: Time travel debugging")
 		map({ "n" }, "<leader>dq", dap.terminate, "DAP: Terminate debugging")
 		map({ "n" }, "<leader>du", dapview.toggle, "DAP-View: Toggle UI")
 		map({ "n" }, "<leader>dw", dapview.add_expr, "DAP: Add cursor word into Watch")
