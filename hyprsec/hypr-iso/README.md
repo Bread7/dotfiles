@@ -4,7 +4,12 @@ This uses [preseeding](https://www.debian.org/releases/trixie/amd64/apbs02.en.ht
 
 Make sure to place iso files in the same directory as the scripts and to execute the script in this directory.
 
-Command to run: `sudo ./<pack.sh> <path/to/iso> <path/to/other_script>...`
+> [!NOTE]
+> Current pack_iso_amd64.sh has not been updated and it is still broken
+
+Command to run: `sudo ./pack_iso_arm64.sh luks_password.sh`
+
+Sample command: `sudo ./<pack.sh> <path/to/iso> <path/to/other_script>...`
 
 ## Dependencies
 

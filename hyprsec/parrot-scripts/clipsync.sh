@@ -25,6 +25,11 @@
 insert() {
   # Read all the piped input into variable.
   value=$(cat)
+
+  if [ -z "$value" ]; then
+    return
+  fi
+
   wValue=$(wl-paste -n 2>/dev/null || echo "")
   xValue=$(xclip -o -selection clipboard 2>/dev/null || echo "")
 

@@ -1,0 +1,10 @@
+# https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html
+# Ignore git dir
+.git/*
+README.md
+parrot-scripts
+legacy
+hypr-iso
+par.*
+ins.*
+deb.*

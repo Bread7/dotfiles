@@ -1,6 +1,6 @@
 768 788 1024 free
     $primary{ }
-    $iflabel{ msdos gpt}
+    $iflabel{ msdos gpt }
     $reusemethod{ }
     method{ efi }
     format{ }

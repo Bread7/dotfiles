@@ -1,6 +1,6 @@
 #!/bin/bash
 
-grub_themes_path=$HOME/Core/grub-themes
+grub_themes_path=$HOME/core/grub-themes
 
 # Make
 if [[ -d $grub_themes_path ]]; then
@@ -19,3 +19,4 @@ else
 fi
 
 sudo ./grub2-themes/install.sh -t tela -c 1152x864 -b
+sudo chown -R $SUDO_USER:$SUDO_USER $grub_themes_path

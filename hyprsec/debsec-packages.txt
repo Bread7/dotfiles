@@ -91,14 +91,12 @@ iputils-ping
 kanshi
 keyboard-configuration
 keychain
-kitty
 kmod
 krb5-locales
 less
 libacl1
 libadwaita-1-dev
 libapparmor1
-libapt-pkg6.0t64
 libasound2-dev
 libattr1
 libaudit-common
@@ -278,9 +276,10 @@ shim-signed
 slurp
 snapper
 stow
+starship
 sudo
-sway
 swayimg
+swaybg
 systemd
 systemd-sysv
 sysvinit-utils

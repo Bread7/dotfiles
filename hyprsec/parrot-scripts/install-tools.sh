@@ -2,7 +2,7 @@
 
 if [[ ${EUID} -ne 0 ]]; then
     echo "[!] root permissions required." 1>&2
-    echo "[!] use 'sudo -E ./install-tools.sh' to preserver environment settings"
+    echo "[!] use 'sudo -E ./install-tools.sh' to preserve environment settings"
     exit 1
 fi
 
@@ -13,9 +13,9 @@ update() {
     apt update || echo -e "[!] Issue with apt" 1>&2
 }
 
-sudo apt install parrot-tools-full
+sudo apt install -y parrot-tools-full
 
-tools_path=$HOME/Core/tools
+tools_path=$SUDO_HOME/core/tools
 
 if [[ ! -d $tools_path ]]; then
     echo "Creating directory"
@@ -76,7 +76,7 @@ else
     fi
     ## [pro, community]
     product=community
-    version="2024.10.3"
+    version="2025.8.2"
     ## [Linux, LinuxArm64, MacOsArm64, MacOsx, Jar, WindowsArm64, WindowsX64]
     type="LinuxArm64"
     wget "https://portswigger.net/burp/releases/startdownload?product=$product&version=$version&type=$type" -O burp_installer.sh
@@ -87,4 +87,4 @@ else
 fi
 
 # Adjust permissions to current user
-sudo chown -R $USER:$USER $tools_path
+sudo chown -R $SUDO_USER:$SUDO_USER $tools_path

@@ -18,18 +18,18 @@ post_setup() {
     # Do not format, spacing matters for sources.list
     echo \
 "
-deb http://deb.debian.org/debian/ testing main
+deb http://deb.debian.org/debian/ testing main contrib non-free
 #deb-src http://deb.debian.org/debian/ testing main
 
-deb http://security.debian.org/debian-security testing-security main
+deb http://security.debian.org/debian-security testing-security main contrib non-free
 #deb-src http://security.debian.org/debian-security testing-security main
 
 # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
-deb http://deb.debian.org/debian/ testing-updates main
+deb http://deb.debian.org/debian/ testing-updates main contrib non-free
 #deb-src http://deb.debian.org/debian/ testing-updates main
 
 # Unstable release sources
-deb http://deb.debian.org/debian/ unstable main
+deb http://deb.debian.org/debian/ unstable main contrib non-free
 #deb-src http://deb.debian.org/debian/ unstable main"\
     > /etc/apt/sources.list
 
@@ -80,13 +80,18 @@ Pin: release a=parrot-security
 Pin-Priority: 300
 EOF
 
-    # curl -fsSL https://deb.parrot.sh/parrot/keyring.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/parrot-archive-keyring.gpg
+cat > /etc/apt/preferences.d/debian-testing-pinning << EOF
+Package: *
+Pin: release o=Debian
+Pin-Priority: 700
+EOF
 
     # Handle packages
     apt update
 
     # Create base directory
     mkdir -p /home/bread/core
+    chown -R bread:bread /home/bread/core
 
     # Get latest dotfiles
     git clone https://github.com/Bread7/dotfiles.git /home/bread/core/dotfiles
