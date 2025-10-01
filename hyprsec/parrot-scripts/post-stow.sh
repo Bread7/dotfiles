@@ -45,7 +45,7 @@ export MANROFFOPT=\"-c\"
 set newCat batcat --color=always --decorations=always --style=full --wrap=never
 
 # ASDF
-source \$HOME/.asdf/asdf.fish
+# source \$HOME/.asdf/asdf.fish
 
 # SSH + keychain
 set GPG_TTY \$(tty)

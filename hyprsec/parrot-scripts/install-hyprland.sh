@@ -5,7 +5,7 @@ set -e
 if [[ $UID != 0 ]]; then
     echo "This script requires sudo permission."
     echo -e "sudo $0 $*\n"
-    exit 1 
+    exit 1
 fi
 
 setup_hypr_deps(){
@@ -16,14 +16,6 @@ setup_hypr_deps(){
     sudo meson install -C build
     cd ..
     sudo rm -r hyprland-protocols
-
-    echo "[***] Installing Hyprland Qt Support"
-    git clone https://github.com/hyprwm/hyprland-qt-support
-    cd hyprland-qt-support
-    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINSTALL_QML_PREFIX=/lib/qt6/qml -S . -B ./build
-    cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
-    cd ..
-    sudo rm -r hyprland-qt-support
 
     echo "[***] Intalling hyprwayland-scanner (builds)"
     git clone https://github.com/hyprwm/hyprwayland-scanner
@@ -98,14 +90,6 @@ setup_hypr_deps(){
     sudo systemctl daemon-reload
     cd ..
     sudo rm -r hyprpolkitagent
-
-    echo "[***] Installing Hyprland Qt Support"
-    git clone https://github.com/hyprwm/hyprland-qt-support
-    cd hyprland-qt-support
-    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINSTALL_QML_PREFIX=/lib/qt6/qml -S . -B ./build
-    cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
-    cd ..
-    sudo rm -r hyprland-qt-support
 }
 
 setup_hypr_plugins(){
@@ -159,14 +143,25 @@ setup_hyprland(){
         libxcb-xfixes0-dev libudis86-dev libglaze-dev libxcb-util-dev libxcb-ewmh-dev libxcb-ewmh2
     git clone --recursive https://github.com/hyprwm/Hyprland --branch v0.51.0
     cd Hyprland
-    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -B build
-    cmake --build ./build --config Debug --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+    #patch -p1 < ../fix-hyprland-compile.patch
+    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DNO_UWSM:STRING=true -B build
+    cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
     sudo cmake --install ./build
     cd ..
     sudo rm -r Hyprland
 }
 
 not_working(){
+    echo "[***] Installing Hyprland Qt Support"
+    sudo apt install -y qt6-base-dev qt6-wayland qt6-declarative-dev qml6-module-qtcore \
+        qml6-module-qtquick-layouts qt6-tools-dev qt6-tools-dev-tools qt6-charts-dev
+    git clone https://github.com/hyprwm/hyprland-qt-support
+    cd hyprland-qt-support
+    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINSTALL_QML_PREFIX=/lib/qt6/qml -S . -B ./build
+    cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+    cd ..
+    sudo rm -r hyprland-qt-support
+
     echo "[***] Installing Hyprland Qtutils"
     sudo apt install -y qt6-base-dev qt6-wayland qt6-declarative-dev qml6-module-qtcore \
         qml6-module-qtquick-layouts qt6-tools-dev qt6-tools-dev-tools qt6-charts-dev
@@ -191,7 +186,7 @@ not_working(){
 
 echo "[*] Installing Hyprland as Window Manager"
 echo "[**] Installing dependencies..."
-# not_working
+#not_working
 setup_hypr_deps
 # setup_vm_deps # Remove if not installing in VM
 echo "[**] Installing plugins..."

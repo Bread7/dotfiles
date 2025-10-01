@@ -50,7 +50,8 @@ additional_deps(){
         libjxl-dev libjxl-tools libjxl-devtools libmagic-dev libpng-dev libpugixml-dev \
         librust-wayland-client-dev wayland-protocols librust-wayland-protocols-dev \
         libsdbus-c++-dev libspa-0.2-dev libpipewire-0.3-dev libdrm-dev libgbm-dev \
-        libseat-dev libinput-dev libudev-dev libdisplay-info-dev hwdata qt6-base-dev
+        libseat-dev libinput-dev libudev-dev libdisplay-info-dev hwdata qt6-base-dev \
+        libpolkit-agent-1-0 libpolkit-agent-1-dev libpolkit-qt6-1-1 libpolkit-qt6-1-dev
 
     # For asdf's python plugin compilation
     sudo apt install -y libssl-dev zlib1g-dev \
