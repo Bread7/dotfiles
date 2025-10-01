@@ -15,6 +15,7 @@ fi
 # # APT
 # $scripts/install-parrot-packages.sh
 # # sudo $scripts/apt-modification.sh
+sudo apt install -y $(cat debsec-packages.txt)
 
 scripts="./parrot-scripts"
 
@@ -66,7 +67,6 @@ $scripts/install-misc.sh
 ## Greetd + ReGreet
 $scripts/install-login-manager.sh
 
-sudo apt install -y $(cat debsec-packages.txt)
 
 # Other small commands
 ## Add bat themes

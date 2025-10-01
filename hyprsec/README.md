@@ -14,14 +14,15 @@
 
 1. Make ISO using the script in `hypr-iso/`: `./<pack_iso.sh> <isofile> luks_password.sh`
 2. Run ISO through VM / Physical Hardware (automated process, do not press anything in grub)
-3. `sudo ./debian-snapper.sh setup` (will reboot afterwards)
-4. `sudo ./debian-snapper.sh post`
-5. `sudo ./hyprsec-setup.sh` to automate installation process
-6. Follow other commands that needs to be executed
+3. Go to `core/dotfiles/hyprsec` and run `sudo ./debian-snapper.sh setup` (will reboot afterwards)
+4. Go to `core/dotfiles/hyprsec` and run `sudo ./debian-snapper.sh post`
+5. Go to `core/dotfiles/hyprsec` and run `sudo ./hyprsec-setup.sh` to automate installation process
+6. Restart system `sudo reboot`
 
 ### Other setups
 
-1. A `core/tools/` directory is created within `$HOME` dir with _burp_installer.sh_ for installation of burp: `./burp_installer.sh`
+1. These require a graphical interface to install
+   - Go to `core/tools/` and run `./burp_installer.sh` for installation of burp
 
 ## Limitation
 
@@ -30,6 +31,7 @@
 - This uses swayfx > sway so may be slightly outdated
 - Certain GUI applications may not work well in wayland so require further configs and testings
 
-### Helpful Links
+## Helpful Links
 
 - [Modify initramfs with auto unlock on boot](https://www.reddit.com/r/pop_os/comments/uhj78q/auto_unlock_gnomekeyring_on_autologin_using_luks/)
+- [Dotfile Inspiration](https://github.com/JaKooLit/Debian-Hyprland)
