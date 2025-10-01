@@ -36,6 +36,7 @@ debian-faq
 debianutils
 dhcpcd-base
 diffutils
+direnv
 dmidecode
 dnsutils
 doc-debian
@@ -75,8 +76,6 @@ grub-efi-arm64
 gzip
 hostname
 httpie
-hyprland
-hyprland-protocols
 hyprwayland-scanner
 ifupdown
 imagemagick

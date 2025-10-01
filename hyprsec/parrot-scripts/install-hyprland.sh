@@ -106,14 +106,6 @@ setup_hypr_deps(){
     cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
     cd ..
     sudo rm -r hyprland-qt-support
-
-    echo "[***] Installing Hyprland Qtutils"
-    git clone https://github.com/hyprwm/hyprland-qtutils
-    cd hyprland-qtutils
-    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
-    cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
-    cd ..
-    sudo rm -r hyprland-qtutils
 }
 
 setup_hypr_plugins(){
@@ -176,7 +168,19 @@ setup_hyprland(){
 
 not_working(){
     echo "[***] Installing Hyprland Qtutils"
-    sudo apt install -y qt6-wayland qt6-wayland-dev qt6-wayland-dev-tools qt6-wayland-private-dev libkwaylandclient6
+    sudo apt install -y qt6-base-dev qt6-wayland qt6-declarative-dev qml6-module-qtcore \
+        qml6-module-qtquick-layouts qt6-tools-dev qt6-tools-dev-tools qt6-charts-dev
+    git clone https://github.com/hyprwm/hyprland-qtutils
+    cd hyprland-qtutils
+    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+    cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+    cd ..
+    sudo rm -r hyprland-qtutils
+
+    echo "[***] Installing Hyprland Qtutils"
+    sudo apt install -y qt6-wayland qt6-wayland-dev qt6-wayland-dev-tools qt6-wayland-private-dev libkwaylandclient6 \
+        	libqt6core5compat6 qt6-base-dev qt6-wayland-dev qt6-wayland qt6-declarative-dev qml6-module-qtcore \
+            qt6-3d-dev qt6-5compat-dev libqt6waylandclient6 qml6-module-qtwayland-client-texturesharing
     git clone https://github.com/hyprwm/hyprland-qtutils
     cd hyprland-qtutils
     cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
