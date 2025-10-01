@@ -25,6 +25,7 @@ setup_asdf(){
 
 post_rust(){
     sudo apt update && sudo apt install -y rustup
+    rustup default stable
 }
 
 echo "[*] Settting up asdf into /usr/local/bin"

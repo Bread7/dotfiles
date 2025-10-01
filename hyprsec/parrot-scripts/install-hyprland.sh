@@ -141,7 +141,7 @@ setup_vm_deps(){
 setup_hyprland(){
     sudo apt install -y libre2-dev libxcb-res0-dev libxcb-errors-dev libxcb-composite0-dev libxcb-icccm4-dev \
         libxcb-xfixes0-dev libudis86-dev libglaze-dev libxcb-util-dev libxcb-ewmh-dev libxcb-ewmh2
-    git clone --recursive https://github.com/hyprwm/Hyprland --branch v0.51.0
+    git clone --recursive https://github.com/hyprwm/Hyprland --branch v0.49.0
     cd Hyprland
     #patch -p1 < ../fix-hyprland-compile.patch
     cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DNO_UWSM:STRING=true -B build

@@ -113,6 +113,12 @@ setup_git_lfs(){
 }
 
 setup_yazi(){
+    echo "[**] Installing dependencies for Yazi"
+    echo 'deb http://download.opensuse.org/repositories/home:/justkidding/Debian_Testing/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
+    curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
+    sudo apt update
+    sudo apt install -y ueberzugpp ffmpeg 7zip jq poppler-utils poppler-data fd-find resvg imagemagick
+
     echo "[**] Installing yazi using crates"
     sudo -u "$SUDO_USER" cargo install --force --git https://github.com/sxyazi/yazi.git yazi-build
 }
