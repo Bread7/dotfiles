@@ -15,7 +15,7 @@ fi
 # # APT
 # $scripts/install-parrot-packages.sh
 # # sudo $scripts/apt-modification.sh
-sudo apt install -y $(cat debsec-packages.txt)
+xargs sudo apt install -y < debsec-packages.txt
 
 scripts="./parrot-scripts"
 

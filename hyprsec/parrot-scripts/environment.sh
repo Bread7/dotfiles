@@ -86,7 +86,7 @@ additional_deps(){
     sudo apt install -y build-essential pandoc poppler-utils ffmpeg ripgrep
 
     # For asdf and crates
-    sudo apt install rustup
+    sudo apt install -y rustup
     rustup default stable
 }
 
