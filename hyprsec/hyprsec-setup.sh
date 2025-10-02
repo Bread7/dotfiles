@@ -12,11 +12,6 @@ if [[ "hyprsec" != $FOLDER_PATH ]]; then
     exit 1
 fi
 
-# # APT
-# $scripts/install-parrot-packages.sh
-# # sudo $scripts/apt-modification.sh
-xargs sudo apt install -y < debsec-packages.txt
-
 scripts="./parrot-scripts"
 
 # Environment
@@ -27,6 +22,11 @@ $scripts/post-stow.sh
 
 # Terminal
 $scripts/install-terminals.sh
+
+# # APT
+# $scripts/install-parrot-packages.sh
+# # sudo $scripts/apt-modification.sh
+sudo apt install -y $(grep -o '^[^#]*' debsec-packages.txt)
 
 # Window Managers
 ## Hyprland
