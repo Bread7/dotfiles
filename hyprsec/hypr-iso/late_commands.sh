@@ -7,10 +7,12 @@
 
 set -x
 
+user=bread
+
 post_setup() {
     # Add user into sudo group
     # Make sure to adjust the value of the user
-    usermod -aG sudo bread
+    usermod -aG sudo $user
 
     # Add new sources
     echo 'APT::Default-Release "/^testing(|-security|-updates)$/";' > /etc/apt/apt.conf.d/20-tum.conf
@@ -90,11 +92,12 @@ EOF
     apt update
 
     # Create base directory
-    mkdir -p /home/bread/core
-    chown -R bread:bread /home/bread/core
+    mkdir -p /home/$user/core
 
     # Get latest dotfiles
-    git clone https://github.com/Bread7/dotfiles.git /home/bread/core/dotfiles
+    git clone https://github.com/Bread7/dotfiles.git /home/$user/core/dotfiles
+
+    chown -R $user:$user /home/$user/core
 
     exit 0
 }
